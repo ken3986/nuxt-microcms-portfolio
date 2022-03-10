@@ -1,7 +1,7 @@
 <template>
   <!-- タグリストコンポーネント -->
   <div class="wrapper">
-    <h1 class="pageTitle">タグ</h1>
+    <h2>タグ</h2>
     <ul class="list">
       <li class="listItem" v-for="tag in tags" :key="tag.id">
         <NuxtLink
@@ -48,6 +48,17 @@ export default {
 
 
 
-<style>
+<style lang="scss" scoped>
 
+  li {
+    display: inline-block;
+    a {
+      background-color: #ccc;
+      color: #fff;
+      padding: 0.2em 0.5em;
+      margin: 0 0.2em 0.5em;
+      border-radius: 2px;
+      font-size: 12px;
+    }
+  }
 </style>

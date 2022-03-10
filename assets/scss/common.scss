@@ -1,0 +1,94 @@
+@charset "UTF-8";
+
+/*------------------------------*/
+/* リセット系 */
+/*------------------------------*/
+*{
+    box-sizing: border-box;
+}
+html, body, ul, figure{
+    margin: 0;
+}
+
+img{
+    vertical-align: bottom;
+}
+ul{
+    list-style: none;
+}
+li{
+    padding: 0;
+}
+table{
+    border-collapse: collapse;
+}
+
+/*------------------------------*/
+/* 汎用系 */
+/*------------------------------*/
+.clearfix:after{
+    display: block;
+    content: '';
+    clear: both;
+}
+
+/*------------------------------*/
+/* 全体のスタイル */
+/*------------------------------*/
+.my_container{
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
+
+    @media(min-width: 568px){
+        max-width: 540px;
+        padding: 0;
+    }
+    @media(min-width: 768px){
+        max-width: 720px;
+    }
+    @media(min-width: 992px){
+        max-width: 960px;
+    }
+    @media(min-width: 1200px){
+        max-width: 1140px;
+    }
+}
+
+/*------------------------------*/
+/* ウィジェットのスタイル */
+/*------------------------------*/
+.widget{
+  &-title{
+    font-size: 14px;
+  }
+}
+
+
+/*------------------------------*/
+/* ヘッダーブロックのスタイル */
+/*------------------------------*/
+$site-header-height: 50px;
+$site-header-space: $site-header-height + 20px;
+
+.site-header {
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  top: 0;
+}
+
+body {
+  padding-top: 70px;
+}
+
+/*------------------------------*/
+/* メインブロックのスタイル */
+/*------------------------------*/
+
+
+/*------------------------------*/
+/* フッターブロックのスタイル */
+/*------------------------------*/
+
+

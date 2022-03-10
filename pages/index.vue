@@ -3,7 +3,7 @@
     <b-container>
       <b-row>
         <b-col>
-          <h1 class="pageTitle">microCMS-test</h1>
+          <h1 class="pageTitle">Works</h1>
         </b-col>
       </b-row>
 
@@ -20,7 +20,7 @@
                   img-middle
                   tag="article"
                   style="max-width: 20rem;"
-                  class="mb-2"
+                  class="mb-2 post-card"
                 >
                   <!-- <b-card-text v-show="post.content">
                     {{ post.content }}
@@ -169,18 +169,9 @@ export default {
 
 
 <style lang="scss" scoped>
-
-  .hukidashi_row {
-    border: 1px solid #000;
-    background-color: #eee;
+  .post-card {
+    height: 100%;
+    margin-bottom: 1em;
   }
 
-  .hukidashi_picture {
-    flex-grow: 0;
-    border-right: 1px solid #000;
-  }
-
-  .hukidashi_line {
-    padding: 1em;
-  }
 </style>

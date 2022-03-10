@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <header class="site-header">
     <b-navbar toggleable="lg" type="dark" variant="info">
       <b-navbar-brand :to="`/`">{{ title }}</b-navbar-brand>
 
@@ -7,38 +7,39 @@
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item href="#">Link</b-nav-item>
-          <b-nav-item href="#" disabled>Disabled</b-nav-item>
+          <b-nav-item href="#">
+            <NuxtLink
+              :to="`/`"
+              class="link"
+            >Works</NuxtLink></b-nav-item>
+          <b-nav-item href="#">
+            <NuxtLink
+              :to="`/about`"
+              class="link"
+            >About</NuxtLink>
+          </b-nav-item>
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
+          <!-- 検索ウィンドウ -->
           <Search></Search>
 
-          <b-nav-item-dropdown text="Lang" right>
+          <!-- <b-nav-item-dropdown text="Lang" right>
             <b-dropdown-item href="#">EN</b-dropdown-item>
             <b-dropdown-item href="#">ES</b-dropdown-item>
             <b-dropdown-item href="#">RU</b-dropdown-item>
             <b-dropdown-item href="#">FA</b-dropdown-item>
-          </b-nav-item-dropdown>
-
-          <b-nav-item-dropdown right>
-            <!-- Using 'button-content' slot -->
-            <template #button-content>
-              <em>User</em>
-            </template>
-            <b-dropdown-item href="#">Profile</b-dropdown-item>
-            <b-dropdown-item href="#">Sign Out</b-dropdown-item>
-          </b-nav-item-dropdown>
+          </b-nav-item-dropdown> -->
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
-  </div>
+  </header>
 </template>
 
 <script>
 export default {
-  name: '',
+  name: 'Header',
 
   data () {
     return {
@@ -60,6 +61,10 @@ export default {
 
 }
 </script>
+
+
+
+
 
 <style>
 

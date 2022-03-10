@@ -33,6 +33,7 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    "~assets/scss/common.scss",
     {
       src: '~/node_modules/highlight.js/styles/monokai-sublime.css',
       lang: 'css',
@@ -98,7 +99,7 @@ export default {
     // apiKey: process.env.API_KEY,
   },
   publicRuntimeConfig: {
-    siteName: 'nuxt-microcms-test',
+    siteName: 'ポートフォリオ',
     apiUrl: process.env.API_URL,
     worksApiConfig: worksApiConfig,
     postsForPage: worksApiConfig.postsForPage,

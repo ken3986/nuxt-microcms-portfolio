@@ -1,12 +1,11 @@
 <template>
 <!-- サイドバーコンポーネント -->
-  <div>
-    サイドバー
-    <Categories></Categories>
-    <Tags></Tags>
-    <button @click.prevent="test">
-      test
-    </button>
+  <div class="sidebar">
+    <div class="sidebar-inner">
+      <Categories></Categories>
+      <Tags></Tags>
+    </div>
+
   </div>
 </template>
 
@@ -29,15 +28,21 @@ export default {
   }, /* mounted */
 
   methods: {
-    test () {
-      console.log('test')
-      this.$store.dispatch('test')
-    }
+
   } /* methods */
 
 }
 </script>
 
-<style>
+
+
+
+<style lang="scss" scoped>
+  @import "~assets/scss/common.scss";
+
+  .sidebar {
+    position: sticky;
+    top: $site-header-space;
+  }
 
 </style>

@@ -1,7 +1,7 @@
 <template>
 <!-- カテゴリーリストコンポーネント -->
   <div class="wrapper">
-    <h1 class="pageTitle">カテゴリー</h1>
+    <h2 class="widget-title">カテゴリー</h2>
     <ul>
       <li class="list" v-for="category in categories" :key="category.id">
         <NuxtLink
@@ -46,6 +46,12 @@ export default {
 }
 </script>
 
-<style>
+
+
+
+
+
+
+<style lang="scss" scoped>
 
 </style>

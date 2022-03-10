@@ -2,16 +2,18 @@
   <!-- Worksレイアウト -->
   <div>
     <Header></Header>
-      <b-container>
-        <b-row>
-          <b-col cols="9">
-            <Nuxt></Nuxt>
-          </b-col>
-          <b-col>
-            <Sidebar></Sidebar>
-          </b-col>
-        </b-row>
-      </b-container>
+      <div class="site-content">
+        <b-container>
+          <b-row>
+            <b-col cols="9">
+              <Nuxt></Nuxt>
+            </b-col>
+            <b-col cols="3">
+              <Sidebar></Sidebar>
+            </b-col>
+          </b-row>
+        </b-container>
+      </div>
     <Footer></Footer>
   </div>
 </template>
@@ -60,6 +62,6 @@ export default {
 
 
 
-<style>
+<style lang="scss" scoped>
 
 </style>
