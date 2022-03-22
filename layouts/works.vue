@@ -5,10 +5,10 @@
       <div class="site-content">
         <b-container>
           <b-row>
-            <b-col cols="9">
+            <b-col lg="9" class="mb-4">
               <Nuxt></Nuxt>
             </b-col>
-            <b-col cols="3">
+            <b-col lg="3">
               <Sidebar></Sidebar>
             </b-col>
           </b-row>

@@ -1,10 +1,19 @@
 <template>
 <!-- サイドバーコンポーネント -->
   <div class="sidebar">
-    <div class="sidebar-inner">
-      <Categories></Categories>
-      <Tags></Tags>
-    </div>
+      <aside>
+        <Profile></Profile>
+      </aside>
+
+      <!-- カテゴリー -->
+      <aside>
+        <Categories></Categories>
+      </aside>
+
+      <!-- タグ -->
+      <aside>
+        <Tags></Tags>
+      </aside>
 
   </div>
 </template>
@@ -43,6 +52,18 @@ export default {
   .sidebar {
     position: sticky;
     top: $site-header-space;
+    border: 1px solid #aaa;
+    padding: 15px;
+
+    aside {
+      padding: 15px 0;
+      &:first-child {
+        padding-top: 0;
+      }
+      &:not(:last-child) {
+        border-bottom: 1px solid #aaa;
+      }
+    }
   }
 
 </style>

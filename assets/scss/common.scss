@@ -12,9 +12,11 @@ html, body, ul, figure{
 
 img{
     vertical-align: bottom;
+    max-width: 100%;
 }
 ul{
     list-style: none;
+    padding: 0;
 }
 li{
     padding: 0;

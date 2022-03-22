@@ -2,16 +2,30 @@
 <!-- 記事詳細ページ -->
 
   <main class="main">
-    <NuxtLink
+    <!-- <NuxtLink
       :to="`/`"
-    >HOME</NuxtLink>
-    <p>個別</p>
+    >HOME</NuxtLink> -->
+    <!-- <p>個別</p> -->
     <!-- タイトル -->
     <h1 class="title" v-if="title">{{ title }}</h1>
     <!-- 公開日 -->
-    <p class="publishedAt" v-if="publishedAt">{{ publishedAt }}</p>
+    <!-- <p class="publishedAt" v-if="publishedAt">{{ publishedAt }}</p> -->
     <!-- 本文 -->
-    <div class="content" v-if="content" v-html="content"></div>
+    <!-- <div class="content" v-if="content" v-html="content"></div> -->
+
+    <div v-if="body" class="post-body">
+      <div v-for="item in body" :key="item.id">
+        <div v-if="item.richText" v-html="item.richText"></div>
+
+        <div v-if="item.modal_picture">
+          <img v-b-modal="'my-modal'" :src="item.modal_picture.url" alt="">
+        </div>
+      </div>
+      <!-- <div class="post-body-richText" v-if="body" v-html="body.richText"></div> -->
+      <!-- {{ body }} -->
+    </div>
+
+    <b-modal id="my-modal">Hello</b-modal>
   </main>
 </template>
 
@@ -48,9 +62,19 @@ export default {
       richText = $.html()
     }
 
+    let body = ''
+    if (post.body) {
+      body = post.body.map(item => ({...item}))
+      body.map((item, i) => {
+        item.id = i
+        return item
+      })
+    }
+
     return {
       ...post,
       richText: richText,
+      body: body
     }
   },
 
@@ -78,7 +102,7 @@ export default {
 
 <style lang="scss" scoped>
 .main {
-  width: 960px;
+  // width: 960px;
   margin: 0 auto;
 }
 
