@@ -19,7 +19,7 @@ export default {
   }, /* computed */
 
   mounted () {
-
+    console.log('test.vue')
   }, /* mounted */
 
   methods: {

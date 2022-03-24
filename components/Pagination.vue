@@ -87,13 +87,22 @@ export default {
 
     linkGen (pageNum) {
       if (this.category !== undefined) {
-        return `/category/${this.category.id}/page/${pageNum}`
+        return `/works/category?categoryId=${this.category.id}?page=${pageNum}`
       } else if (this.tag !== undefined) {
-        return `/tag/${this.tag.id}/page/${pageNum}`
+        return `/works/tag/${this.tag.id}?page=${pageNum}`
       } else {
-        return `/page/${pageNum}`
+        return `?page=${pageNum}`
       }
     }
+    // linkGen (pageNum) {
+    //   if (this.category !== undefined) {
+    //     return `/category/${this.category.id}/page/${pageNum}`
+    //   } else if (this.tag !== undefined) {
+    //     return `/tag/${this.tag.id}/page/${pageNum}`
+    //   } else {
+    //     return `/page/${pageNum}`
+    //   }
+    // }
   } /* methods */
 
 }

@@ -1,7 +1,7 @@
 <template>
-  <div class="works">
-    <NuxtChild
-    ></NuxtChild>
+  <div class="works-index">
+    実績
+
   </div>
 </template>
 
@@ -11,7 +11,7 @@ import { mapGetters } from 'vuex'
 
 export default {
 
-  layout: 'works',
+  // layout: 'works',
 
   async fetch () {
     // 1ページごとの投稿数設定を取得
@@ -48,6 +48,17 @@ export default {
     this.posts = data.contents
     // 投稿数を反映
     this.postsTotalCount = data.totalCount
+
+
+
+    // カテゴリー情報を取得
+    const category = await this.$microcms.get({
+      endpoint: 'works-categories',
+      queries: {
+        ids: categoryId
+      }
+    })
+    this.category = category.contents[0]
   },
 
   data () {
@@ -56,6 +67,8 @@ export default {
       postsTotalCount: 0,
       categoryId: '',
       tagId: '',
+
+      category: {},
     }
   },
 
@@ -73,21 +86,21 @@ export default {
       return [...Array(Math.ceil(this.postsTotalCount / this.$config.postsForPage)).keys()]
     },
 
-    selectedCategory () {
+    currentCategory () {
       const categoryId = this.$route.params.categoryId
-      const selectedCategory =
+      const currentCategory =
       categoryId !== undefined
         ? this.worksCategories.find((content) => content.id === categoryId)
         : undefined
-      return selectedCategory
+      return currentCategory
     },
-    selectedTag () {
+    currentTag () {
       const tagId = this.$route.params.tagId
-      const selectedTag =
+      const currentTag =
       tagId !== undefined
         ? this.worksTags.find((content) => content.id === tagId)
         : undefined
-      return selectedTag
+      return currentTag
     },
   },
 

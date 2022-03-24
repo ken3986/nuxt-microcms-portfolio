@@ -36,7 +36,7 @@ import hljs from 'highlight.js'
 export default {
   name: '',
 
-  layout: 'works',
+  // layout: 'works',
 
   async asyncData(context) {
     const post =
@@ -76,6 +76,10 @@ export default {
       richText: richText,
       body: body
     }
+  },
+
+  mounted () {
+    console.log('mounted')
   },
 
   data () {

@@ -129,7 +129,7 @@ export default {
         })
           .then((res) => {
             return res.contents.map((content) => ({
-              route: `/posts/${content.id}`,
+              route: `/works/posts/${content.id}`,
               payload: content,
             }))
           })
@@ -149,7 +149,7 @@ export default {
         })
           .then((res) => {
             return range(1, Math.ceil(res.totalCount / postsForPage)).map((p) => ({
-              route: `/page/${p}`
+              route: `/works/page/${p}`
             }))
           })
 
@@ -157,14 +157,14 @@ export default {
       // カテゴリーページの生成
       const categories = await client
           .get({
-            endpoint: 'works-categories',
+            endpoint: worksApiConfig.endpoint + '-categories',
             queries: {
               fields: 'id',
             }
           })
-            .then((res) => {
-              return res.contents.map((content) => content.id)
-            })
+            // .then((res) => {
+            //   return res.contents.map((content) => content.id)
+            // })
 
       const categoryPages = await Promise.all(
         categories.map((category) => {
@@ -172,18 +172,19 @@ export default {
               endpoint: worksApiConfig.endpoint,
               queries: {
                 limit: 0,
-                filters: `category[equals]${category}`
+                filters: `category[equals]${category.id}`
               }
 
           })
             .then((res) => {
               return range(1, Math.ceil(res.totalCount / postsForPage)).map((p) => ({
-                route: `/category/${category}/page/${p}`,
+                route: `/works/category/${category.id}/page/${p}`,
               }))
             })
         })
       )
       const flattenCategoryPages = [].concat.apply([], categoryPages)
+
 
       // タグページの生成
       const tags = await client
@@ -193,9 +194,9 @@ export default {
               fields: 'id',
             }
           })
-            .then((res) => {
-              return res.contents.map((content) => content.id)
-            })
+            // .then((res) => {
+            //   return res.contents.map((content) => content.id)
+            // })
 
       const tagPages = await Promise.all(
         tags.map((tag) => {
@@ -203,19 +204,20 @@ export default {
               endpoint: worksApiConfig.endpoint,
               queries: {
                 limit: 0,
-                filters: `tags[contains]${tag}`
+                filters: `tags[contains]${tag.id}`
               }
 
           })
             .then((res) => {
               return range(1, Math.ceil(res.totalCount / postsForPage)).map((p) => ({
-                route: `/tag/${tag}/page/${p}`,
+                route: `/works/tag/${tag.id}/page/${p}`,
               }))
             })
         })
       )
       const flattenTagPages = [].concat.apply([], tagPages)
 
+      // ルートの生成
       routes = [
         ...posts,
         ...pages,
@@ -225,28 +227,29 @@ export default {
 
       return routes
     },
-  },
+  }, /* generate */
+
 
   router: {
     extendRoutes(routes, resolve) {
       // ページングルート
-      routes.push({
-        path: '/page/:p',
-        component: resolve(__dirname, 'pages/index.vue'),
-        name: 'page',
-      })
+      // routes.push({
+      //   path: '/works/page/:p',
+      //   component: resolve(__dirname, 'pages/works/index.vue'),
+      //   name: 'page',
+      // })
       // カテゴリールート
-      routes.push({
-        path: '/category/:categoryId/page/:p',
-        component: resolve(__dirname, 'pages/index.vue'),
-        name: 'category',
-      })
+      // routes.push({
+      //   path: '/works/category/:categoryId',
+      //   component: resolve(__dirname, 'pages/works/category/_categoryId.vue'),
+      //   name: 'category',
+      // })
       // タグルート
-      routes.push({
-        path: '/tag/:tagId/page/:p',
-        component: resolve(__dirname, 'pages/index.vue'),
-        name: 'tag',
-      })
+      // routes.push({
+      //   path: '/works/tag/:tagId/page/:p',
+      //   component: resolve(__dirname, 'pages/works/tag.vue'),
+      //   name: 'tag',
+      // })
 
     }
   },

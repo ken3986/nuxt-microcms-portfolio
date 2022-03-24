@@ -5,6 +5,11 @@
         <Profile></Profile>
       </aside>
 
+      <!-- 検索 -->
+      <aside>
+        <Search></Search>
+      </aside>
+
       <!-- カテゴリー -->
       <aside>
         <Categories></Categories>

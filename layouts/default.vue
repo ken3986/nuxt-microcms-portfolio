@@ -1,31 +1,42 @@
 <template>
+  <!-- Worksレイアウト -->
   <div>
     <Header></Header>
-    <Nuxt></Nuxt>
-      <!-- <b-container>
-        <b-row>
-          <b-col cols="9">
-            <Nuxt></Nuxt>
-          </b-col>
-          <b-col>
-            <Sidebar></Sidebar>
-          </b-col>
-        </b-row>
-      </b-container> -->
+      <div class="site-content">
+        <b-container>
+          <b-row>
+            <b-col lg="9" class="mb-4">
+              <Nuxt></Nuxt>
+            </b-col>
+            <b-col lg="3">
+              <Sidebar></Sidebar>
+            </b-col>
+          </b-row>
+        </b-container>
+      </div>
     <Footer></Footer>
   </div>
 </template>
 
 <script>
-import Header from "@/components/Header.vue"
-import Footer from '@/components/Footer.vue'
 
 export default {
-  name: '',
+  name: 'works',
 
-  components: {
-    Header: Header,
-    Footer: Footer,
+  async fetch () {
+    // カテゴリーリストの取得
+    const categories = await this.$microcms.get({
+      endpoint: `works-categories`,
+    })
+    // カテゴリーリストの登録
+    this.$store.commit('works/setCategories', categories.contents)
+
+    // タグリストの取得
+    const tags = await this.$microcms.get({
+      endpoint: `works-tags`,
+    })
+    // タグリストの登録
+    this.$store.commit('works/setTags', tags.contents)
   },
 
   data () {
@@ -49,6 +60,8 @@ export default {
 }
 </script>
 
-<style>
+
+
+<style lang="scss" scoped>
 
 </style>

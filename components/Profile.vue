@@ -3,7 +3,11 @@
   <div class="wrapper">
     <b-row>
       <b-col cols="4" lg="12">
-        <img src="~/assets/image/shibanyan.png" alt="">
+        <NuxtLink
+          to="/about"
+        >
+          <img src="~/assets/image/shibanyan.png" alt="">
+        </NuxtLink>
       </b-col>
       <b-col cols="8" lg="12">
         <p>東京都在住、デザイナー/コーダーです。お仕事募集中。</p>

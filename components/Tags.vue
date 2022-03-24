@@ -1,12 +1,17 @@
 <template>
   <!-- タグリストコンポーネント -->
   <div class="wrapper">
-    <h2>タグ</h2>
+    <h2 class="widget-title">タグ</h2>
     <ul class="list">
       <li class="listItem" v-for="tag in tags" :key="tag.id">
         <NuxtLink
-         :to="`/tag/${tag.id}/page/1`"
-         class="link"
+          :to="{
+            path: `/works/tag/${tag.id}`,
+            query: {
+              page: 1
+            }
+            }"
+          class="link"
         >{{ tag.name }}</NuxtLink>
       </li>
     </ul>

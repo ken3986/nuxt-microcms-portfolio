@@ -5,9 +5,20 @@
     <ul>
       <li class="list" v-for="category in categories" :key="category.id">
         <NuxtLink
-          :to="`/category/${category.id}/page/1`"
+          :to="{
+            path: `/works/category/${category.id}`,
+            query: {
+              page: 1
+              }
+            }"
           class="link"
         >{{ category.name }}</NuxtLink>
+        <!-- <NuxtLink
+          :to="{
+            path: `/works/category/${category.id}/page/1`,
+            }"
+          class="link"
+        >{{ category.name }}</NuxtLink> -->
       </li>
     </ul>
   </div>

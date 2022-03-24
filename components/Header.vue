@@ -9,7 +9,7 @@
         <b-navbar-nav>
           <b-nav-item href="#">
             <NuxtLink
-              :to="`/`"
+              :to="`/works`"
               class="link"
             >Works</NuxtLink></b-nav-item>
           <b-nav-item href="#">
@@ -22,8 +22,6 @@
 
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
-          <!-- 検索ウィンドウ -->
-          <Search></Search>
 
           <!-- <b-nav-item-dropdown text="Lang" right>
             <b-dropdown-item href="#">EN</b-dropdown-item>
