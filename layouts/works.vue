@@ -37,6 +37,13 @@ export default {
     })
     // タグリストの登録
     this.$store.commit('works/setTags', tags.contents)
+
+    // 投稿リストの取得
+    const posts = await this.$microcms.get({
+      endpoint: `works`,
+    })
+    // タグリストの登録
+    this.$store.commit('works/setPosts', posts.contents)
   },
 
   data () {

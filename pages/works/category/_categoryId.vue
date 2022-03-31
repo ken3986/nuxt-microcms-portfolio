@@ -38,7 +38,6 @@
             :pager="pager"
             :current="Number(page)"
             :category="currentCategory"
-            :tag="currentTag ? currentTag : null"
           ></Pagination>
         </b-col>
       </b-row>
@@ -49,9 +48,10 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import Mixin from '~/mixins/mixin'
 
 export default {
-
+  mixins: [Mixin],
   // layout: 'works',
 
   async fetch () {
@@ -101,9 +101,7 @@ export default {
       return currentCategory
     },
 
-    currentTag () {
-      return {}
-    }
+
 
   },
 
@@ -117,29 +115,33 @@ export default {
     // const page = this.$route.params.page || '1'
     // カテゴリーIDを取得
     const categoryId = this.$route.params.categoryId
-    // タグIDを取得
-    const tagId = this.$route.params.tagId
 
-    // 投稿の絞り込み
-    let queries = {}
-      // 1ページごとの投稿数設定を反映
-      queries.limit = postsForPage
-      // 現在のページにある投稿を反映
-      queries.offset = (page - 1) * postsForPage
-      // カテゴリーまたはタグで絞り込み
-      const postsFilter =
-        categoryId !== undefined
-          ? `category[equals]${categoryId}`
-          : tagId !== undefined
-          ? `tags[contains]${tagId}`
-          : undefined
-      queries.filters = postsFilter
-
-    // 投稿を取得
-    const data = await this.$microcms.get({
-      endpoint: `works`,
-      queries: queries
+    const data = await this.getData({
+      postsForPage: postsForPage,
+      page: page,
+      categoryId: categoryId,
     })
+
+    // // 投稿の絞り込み
+    // let queries = {}
+    //   // 1ページごとの投稿数設定を反映
+    //   queries.limit = postsForPage
+    //   // 現在のページにある投稿を反映
+    //   queries.offset = (page - 1) * postsForPage
+    //   // カテゴリーまたはタグで絞り込み
+    //   const postsFilter =
+    //     categoryId !== undefined
+    //       ? `category[equals]${categoryId}`
+    //       : tagId !== undefined
+    //       ? `tags[contains]${tagId}`
+    //       : undefined
+    //   queries.filters = postsFilter
+
+    // // 投稿を取得
+    // const data = await this.$microcms.get({
+    //   endpoint: `works`,
+    //   queries: queries
+    // })
 
     // 投稿一覧を反映
     this.posts = data.contents

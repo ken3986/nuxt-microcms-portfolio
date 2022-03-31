@@ -37,7 +37,6 @@
           <Pagination
             :pager="pager"
             :current="Number(page)"
-            :category="currentCategory"
             :tag="currentTag ? currentTag : null"
           ></Pagination>
         </b-col>
@@ -93,14 +92,6 @@ export default {
       return [...Array(Math.ceil(this.postsTotalCount / this.$config.postsForPage)).keys()]
     },
 
-    currentCategory () {
-      const categoryId = this.$route.params.categoryId
-      const currentCategory =
-      categoryId !== undefined
-        ? this.worksCategories.find((content) => content.id === categoryId)
-        : undefined
-      return currentCategory
-    },
 
     currentTag () {
       const tagId = this.$route.params.tagId
