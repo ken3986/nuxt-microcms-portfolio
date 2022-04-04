@@ -1,5 +1,5 @@
 <template>
-  <div class="searchResult">
+  <div class="wrapper">
     <p v-show="searchText">「{{ searchText }}」の検索結果</p>
     <div class="loader" v-if="loading === true">
       <img
@@ -10,41 +10,52 @@
     </div>
     <div v-else>
       <div class="loader"
-        v-show="loading === false && posts.length === 0"
-      >記事がありません</div>
-    </div>
-    <!-- 記事リスト -->
-    <b-row>
-      <b-col v-for="post in posts" :key="post.id" class="post" cols="12" md="6" lg="4">
-        <b-card
-          :title="post.title || 'No title'"
-
-          tag="article"
-          no-body
-          class="mb-2 post-card"
+        v-show="loading === false && contents.length === 0"
+      >記事がありません
+      </div>
+      <ul>
+        <li class="list" v-for="content in contents" :key="content.id">
+          <NuxtLink :to="`/posts/${content.id}`" class="link">
+            <!-- <picture>
+              <source
+                type="image/webp"
+                :srcset="content.ogimage.url + '?w=670&fm=webp'"
+              >
+              <img
+                :src="content.ogimage.url + '?w=670'"
+                alt="">
+            </picture> -->
+            <dl class="content">
+              <dt class="title">{{ content.title }}</dt>
+              <dd>
+                <!-- <Meta
+                  :created-at="content.publishedAt || content.createdAt"
+                  :author="content.writer.name"
+                  :category="content.category"
+                  :tags="content.tag"
+                ></Meta> -->
+              </dd>
+            </dl>
+          </NuxtLink>
+        </li>
+      </ul>
+      <ul class="pager" v-show="contents.length > 0">
+        <li
+          v-for="p in pager"
+          :key="p"
+          class="page"
+          :class="{ active: page === `${p + 1}` }"
         >
-
-          <b-row no-gutters>
-            <b-col cols="4" md="12">
-              <b-card-img :src="post.thumbnail ? post.thumbnail.url : 'https://picsum.photos/600/300/?image=25'"></b-card-img>
-            </b-col>
-            <b-col cols="8" md="12">
-              <b-card-body>
-                <h5 class="card-title">{{ post.title }}</h5>
-                <b-button :to="`/works/posts/${post.id}`" variant="primary" class="stretched-link">Read more</b-button>
-              </b-card-body>
-            </b-col>
-          </b-row>
-        </b-card>
-      </b-col>
-    </b-row>
-
-    <Pagination
-      v-show="posts.length > 0"
-      :pager="pager"
-      :current="Number(page)"
-      :searchText="searchText"
-    ></Pagination>
+          <NuxtLink
+            :to="`/${
+              selectedCategory !== undefined
+                ? `category/${selectedCategory.id}`
+                : ''
+            }page/${p + 1}`"
+          >{{ p + 1 }}</NuxtLink>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -54,15 +65,13 @@ import axios from 'axios'
 export default {
   name: 'SearchResults',
 
-  layout: 'works',
-
   data () {
     return {
       searchable: true,
-      posts: this.posts || [],
-      postsTotalCount: this.postsTotalCount || 0,
+      contents: this.contents || {},
+      totalCount: this.totalCount || 0,
       categories: this.categories || [],
-      // pager: this.pager || [],
+      pager: this.pager || [],
       loading: true,
       q: this.$route.query.q,
 
@@ -71,21 +80,18 @@ export default {
   }, /* data */
 
   computed: {
-    page () {
-      const page = this.$route.query.p || '1'
-      return page
-    },
-    pager () {
-      return [...Array(Math.ceil(this.postsTotalCount / this.$config.postsForPage)).keys()]
-    },
 
   }, /* computed */
 
-  created () {
+  mounted () {
+
+  }, /* mounted */
+
+  created() {
     // 直接遷移時にも動作
     const query = this.$route.query
     this.search(query.q)
-  }, /* mounted */
+  },
 
   methods: {
     setSearchable () {
@@ -107,8 +113,8 @@ export default {
         return
       }
       this.searchText = q
-      this.posts = data.contents
-      this.postsTotalCount =  data.totalCount
+      this.contents = data.contents
+      this.totalCount =  data.totalCount
       this.searchable = false
     },
 
@@ -125,13 +131,9 @@ export default {
     const query = to.query
     this.search(query.q)
     next()
-  },
-
+  }
 }
 </script>
-
-
-
 
 
 <style lang="scss" scoped>
@@ -469,4 +471,3 @@ export default {
   }
 }
 </style>
-

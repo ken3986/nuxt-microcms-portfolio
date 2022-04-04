@@ -14,7 +14,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import Mixin from '~/mixins/mixin'
+import Mixin from '~/mixins/works'
 
 export default {
   mixins: [Mixin],

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>{{ currentCategory.name }}</h2>
+    <h2>{{ currentTaxonomy.name }}</h2>
 
       <!-- 記事リスト -->
       <b-row>
@@ -37,7 +37,7 @@
           <Pagination
             :pager="pager"
             :current="Number(page)"
-            :category="currentCategory"
+            :category="currentTaxonomy"
           ></Pagination>
         </b-col>
       </b-row>
@@ -47,19 +47,22 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import BlogApi from '@/mixins/mixin'
+import WorksMixin from '@/mixins/works'
 
 export default {
   layout: 'works',
 
-  mixins: [ BlogApi, ],
+  mixins: [ WorksMixin, ],
 
   async fetch () {
     const result = await this.getData({
-      categoryId: this.$route.params.slug
+      categoryId: this.$route.params.id,
+      postsForPage: this.$config.worksApiConfig.postsForPage,
+      page: this.$route.params.p || 1,
     })
 
     this.posts = result.contents
+    this.postsTotalCount = result.totalCount
   },
 
   data () {
@@ -82,20 +85,16 @@ export default {
       return [...Array(Math.ceil(this.postsTotalCount / this.$config.postsForPage)).keys()]
     },
 
-    currentCategory () {
-      const categoryId = this.$route.params.slug
+    currentTaxonomy () {
+      const currentId = this.$route.params.id
       const currentCategory =
-      categoryId !== undefined
-        ? this.worksCategories.find((content) => content.id === categoryId)
+      currentId !== undefined
+        ? this.worksCategories.find((content) => content.id === currentId)
         : undefined
       return currentCategory
-    },
+    }
 
   }, /* computed */
-
-  mounted () {
-
-  }, /* mounted */
 
   methods: {
 
@@ -104,6 +103,10 @@ export default {
 }
 </script>
 
-<style>
+
+
+
+
+<style lang="scss" scoped>
 
 </style>
