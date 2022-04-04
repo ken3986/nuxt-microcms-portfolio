@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <ul class="pager">
+    <!-- <ul class="pager">
       <li class="page arrow" v-if="current > 1">
         <NuxtLink :to="getPath(current - 1)">
           <img src="" alt="前のページへ">
@@ -27,12 +27,13 @@
           <img src="" alt="次のページへ">
         </NuxtLink>
       </li>
-    </ul>
+    </ul> -->
 
     <b-pagination-nav
       :value="current"
       :number-of-pages="pager.length > 0 ? pager.length : 1"
       :link-gen="linkGen"
+      :use-router="true"
     ></b-pagination-nav>
   </div>
 </template>
@@ -60,7 +61,12 @@ export default {
       type: Object,
       required: false,
       default: undefined,
-    }
+    },
+    searchText: {
+      type: String,
+      required: false,
+      default: undefined,
+    },
   },
 
   data () {
@@ -88,9 +94,14 @@ export default {
     linkGen (pageNum) {
       if (this.category !== undefined) {
         return `/works/category/${this.category.id}/page/${pageNum}`
-      } else if (this.tag !== undefined) {
-        return `/works/tag/${this.tag.id}?page=${pageNum}`
-      } else {
+      }
+      else if (this.tag !== undefined) {
+        return `/works/tag/${this.tag.id}/page/${pageNum}`
+      }
+      else if (this.searchText !== undefined) {
+        return `/works/search-results/?q=${this.searchText}&p=${pageNum}`
+      }
+      else {
         return `?page=${pageNum}`
       }
     }

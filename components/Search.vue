@@ -47,7 +47,10 @@ export default {
       if (!this.searchWord.trim()) {
         return
       }
-      this.$router.push({ path: '/search-results', query: { q: this.searchWord } })
+      this.$router.push({ path: '/works/search-results', query: {
+        q: this.searchWord,
+        p: 1,
+      } })
     }
   } /* methods */
 

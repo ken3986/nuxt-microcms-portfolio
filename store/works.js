@@ -18,65 +18,56 @@ export const getters = {
   },
 
   getReferencedCategories (state) {
-    let categories = []
+    let categories = state.categories.map((category) => ({...category}))
+    let referencedCategories = categories.map((category) => {
+      return Object.assign({referenced: 0}, category)
+    })
 
     for (const post of state.posts) {
       if (post.category) {
-        const existCategory = categories.find((category) => {
-          if (category.id) {
-            return category.id == post.category.id
-          } else {
-            return false
-          }
+        const existCategory = referencedCategories.find((category) => {
+          return category.id == post.category.id
         })
-        if(!existCategory) {
-          categories.push(Object.assign({referenced: 1}, post.category))
-        } else {
+        if(existCategory) {
           existCategory.referenced++
         }
       }
     }
 
-    categories.sort((a, b) => {
-      if (a.referenced > b.referenced) {
-        return -1
-      } else {
-        return 1
-      }
-    })
-    return categories
+    referencedCategories = referencedCategories.filter((category) => category.referenced > 0)
+
+    return referencedCategories
   },
 
   getReferencedTags (state) {
-    let tags = []
+    let tags = state.tags.map((tag) => ({...tag}))
+    let referencedTags = tags.map((tag) => {
+      return Object.assign({referenced: 0}, tag)
+    })
 
     for (const post of state.posts) {
       if (post.tags) {
         for (const postTag of post.tags) {
-          const existTag = tags.find((tag) => {
-            if (tag.id) {
-              return tag.id === postTag.id
-            } else {
-              return false
-            }
+          const existTag = referencedTags.find((tag) => {
+            return tag.id === postTag.id
           })
-          if (!existTag) {
-            tags.push(Object.assign({referenced: 1}, postTag))
-          } else {
+          if (existTag) {
             existTag.referenced++
           }
         }
       }
     }
 
-    tags.sort((a, b) => {
+    referencedTags = referencedTags.filter((tag) => tag.referenced > 0)
+
+    referencedTags.sort((a, b) => {
       if (a.referenced > b.referenced) {
         return -1
       } else {
         return 1
       }
     })
-    return tags
+    return referencedTags
   },
 }
 
