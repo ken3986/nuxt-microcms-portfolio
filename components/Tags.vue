@@ -3,13 +3,10 @@
   <div class="wrapper">
     <h2 class="widget-title">タグ</h2>
     <ul class="list">
-      <li class="listItem" v-for="tag in tags" :key="tag.id">
+      <li class="listItem" v-for="tag in referencedTags" :key="tag.id">
         <NuxtLink
           :to="{
-            path: `/works/tag/${tag.id}`,
-            query: {
-              page: 1
-            }
+            path: `/works/tag/${tag.id}/page/1`,
             }"
           class="link"
         >{{ tag.name }}</NuxtLink>
@@ -37,6 +34,7 @@ export default {
   computed: {
     ...mapGetters({
       tags: 'works/getTags',
+      referencedTags: 'works/getReferencedTags',
     })
   }, /* computed */
 

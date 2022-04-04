@@ -27,6 +27,9 @@ export default {
     // カテゴリーリストの取得
     const categories = await this.$microcms.get({
       endpoint: `works-categories`,
+      queries: {
+        limit: 1000,
+      }
     })
     // カテゴリーリストの登録
     this.$store.commit('works/setCategories', categories.contents)
@@ -34,6 +37,9 @@ export default {
     // タグリストの取得
     const tags = await this.$microcms.get({
       endpoint: `works-tags`,
+      queries: {
+        limit: 1000,
+      }
     })
     // タグリストの登録
     this.$store.commit('works/setTags', tags.contents)
@@ -41,6 +47,9 @@ export default {
     // 投稿リストの取得
     const posts = await this.$microcms.get({
       endpoint: `works`,
+      queries: {
+        limit: 1000,
+      }
     })
     // タグリストの登録
     this.$store.commit('works/setPosts', posts.contents)
@@ -69,6 +78,11 @@ export default {
 
 
 
-<style lang="scss" scoped>
-
+<style lang="scss">
+  .post {
+    padding-bottom: 1em;
+  }
+  .post-card {
+    height: 100%;
+  }
 </style>

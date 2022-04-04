@@ -117,12 +117,5 @@ export default {
 
 
 <style lang="scss" scoped>
-  .post {
-    padding-bottom: 1em;
-  }
-  .post-card {
-    height: 100%;
-
-  }
 
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <!-- <ul class="pager">
+    <ul class="pager">
       <li class="page arrow" v-if="current > 1">
         <NuxtLink :to="getPath(current - 1)">
           <img src="" alt="前のページへ">
@@ -27,7 +27,7 @@
           <img src="" alt="次のページへ">
         </NuxtLink>
       </li>
-    </ul> -->
+    </ul>
 
     <b-pagination-nav
       :value="current"
@@ -81,13 +81,13 @@ export default {
   methods: {
     getPath(p) {
       return `/${
-        this.category !== undefined ? `category/${this.category.id}/` : ''
+        this.category !== undefined ? `works/category/${this.category.id}/` : ''
       }page/${p}`
     },
 
     linkGen (pageNum) {
       if (this.category !== undefined) {
-        return `/works/category?categoryId=${this.category.id}?page=${pageNum}`
+        return `/works/category/${this.category.id}/page/${pageNum}`
       } else if (this.tag !== undefined) {
         return `/works/tag/${this.tag.id}?page=${pageNum}`
       } else {

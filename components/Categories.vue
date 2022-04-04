@@ -2,17 +2,15 @@
 <!-- カテゴリーリストコンポーネント -->
   <div class="wrapper">
     <h2 class="widget-title">カテゴリー</h2>
+    <!-- {{referencedCategories}} -->
     <ul>
-      <li class="list" v-for="category in categories" :key="category.id">
+      <li class="list" v-for="category in referencedCategories" :key="category.id">
         <NuxtLink
           :to="{
-            path: `/works/category/${category.id}`,
-            query: {
-              page: 1
-              }
+            path: `/works/category/${category.id}/page/1`,
             }"
           class="link"
-        >{{ category.name }}</NuxtLink>
+        >{{ category.name }}（{{ category.referenced }}）</NuxtLink>
         <!-- <NuxtLink
           :to="{
             path: `/works/category/${category.id}/page/1`,
@@ -43,6 +41,7 @@ export default {
   computed: {
     ...mapGetters({
       categories: 'works/getCategories',
+      referencedCategories: 'works/getReferencedCategories'
     })
   }, /* computed */
 

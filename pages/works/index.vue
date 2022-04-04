@@ -21,7 +21,21 @@ export default {
   // layout: 'works',
 
   async fetch () {
-    this.fetchData()
+      // 投稿を取得
+      let array = []
+      for (const [index, category] of this.worksCategories.entries()) {
+        const posts = await this.getData({
+          categoryId: category.id
+        })
+        const item = {
+          category: category,
+          posts: posts,
+          id: index,
+        }
+        array.push(item)
+      }
+
+      this.categorisedPostsLists = array
   },
 
   data () {

@@ -7,7 +7,7 @@
     >HOME</NuxtLink> -->
     <!-- <p>個別</p> -->
     <!-- タイトル -->
-    <h1 class="title" v-if="title">{{ title }}</h1>
+    <h1 class="title" v-if="title">タイトル{{ title }}</h1>
     <!-- 公開日 -->
     <!-- <p class="publishedAt" v-if="publishedAt">{{ publishedAt }}</p> -->
     <!-- 本文 -->
@@ -40,7 +40,7 @@ export default {
 
   async asyncData(context) {
     const post =
-     context.payload ||
+    //  context.payload ||
      await context.$microcms.getListDetail({
       endpoint: 'works',
       contentId: context.params.id
@@ -91,10 +91,6 @@ export default {
   computed: {
 
   }, /* computed */
-
-  mounted () {
-
-  }, /* mounted */
 
   methods: {
 

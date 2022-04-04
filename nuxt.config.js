@@ -116,117 +116,117 @@ export default {
   },
 
   generate: {
-    async routes () {
-      let routes = []
+    // async routes () {
+    //   let routes = []
 
-      // 記事詳細ページの生成
-      const posts = await client
-        .get({
-          endpoint: worksApiConfig.endpoint,
-          queries: {
-            limit: worksApiConfig.limit,
-          }
-        })
-          .then((res) => {
-            return res.contents.map((content) => ({
-              route: `/works/posts/${content.id}`,
-              payload: content,
-            }))
-          })
-
-
-      // ページングページの生成
-      const range = (start, end) =>
-        [...Array(end - start + 1)].map((_, i) => start + i)
-      const postsForPage = worksApiConfig.postsForPage
-
-      const pages = await client
-        .get({
-          endpoint: worksApiConfig.endpoint,
-          queries: {
-            limit: 0,
-          }
-        })
-          .then((res) => {
-            return range(1, Math.ceil(res.totalCount / postsForPage)).map((p) => ({
-              route: `/works/page/${p}`
-            }))
-          })
+    //   // 記事詳細ページの生成
+    //   // const posts = await client
+    //   //   .get({
+    //   //     endpoint: worksApiConfig.endpoint,
+    //   //     queries: {
+    //   //       limit: worksApiConfig.limit,
+    //   //     }
+    //   //   })
+    //   //     .then((res) => {
+    //   //       return res.contents.map((content) => ({
+    //   //         route: `/works/posts/${content.id}`,
+    //   //         payload: content,
+    //   //       }))
+    //   //     })
 
 
-      // カテゴリーページの生成
-      const categories = await client
-          .get({
-            endpoint: worksApiConfig.endpoint + '-categories',
-            queries: {
-              fields: 'id',
-            }
-          })
-            // .then((res) => {
-            //   return res.contents.map((content) => content.id)
-            // })
+    //   // ページングページの生成
+    //   const range = (start, end) =>
+    //     [...Array(end - start + 1)].map((_, i) => start + i)
+    //   const postsForPage = worksApiConfig.postsForPage
 
-      const categoryPages = await Promise.all(
-        categories.map((category) => {
-          return client.get({
-              endpoint: worksApiConfig.endpoint,
-              queries: {
-                limit: 0,
-                filters: `category[equals]${category.id}`
-              }
-
-          })
-            .then((res) => {
-              return range(1, Math.ceil(res.totalCount / postsForPage)).map((p) => ({
-                route: `/works/category/${category.id}/page/${p}`,
-              }))
-            })
-        })
-      )
-      const flattenCategoryPages = [].concat.apply([], categoryPages)
+    //   // const pages = await client
+    //   //   .get({
+    //   //     endpoint: worksApiConfig.endpoint,
+    //   //     queries: {
+    //   //       limit: 0,
+    //   //     }
+    //   //   })
+    //   //     .then((res) => {
+    //   //       return range(1, Math.ceil(res.totalCount / postsForPage)).map((p) => ({
+    //   //         route: `/works/page/${p}`
+    //   //       }))
+    //   //     })
 
 
-      // タグページの生成
-      const tags = await client
-          .get({
-            endpoint: 'works-tags',
-            queries: {
-              fields: 'id',
-            }
-          })
-            // .then((res) => {
-            //   return res.contents.map((content) => content.id)
-            // })
+    //   // カテゴリーページの生成
+    //   const categories = await client
+    //       .get({
+    //         endpoint: worksApiConfig.endpoint + '-categories',
+    //         queries: {
+    //           fields: 'id',
+    //         }
+    //       })
+    //         .then((res) => {
+    //           return res.contents.map((content) => content.id)
+    //         })
 
-      const tagPages = await Promise.all(
-        tags.map((tag) => {
-          return client.get({
-              endpoint: worksApiConfig.endpoint,
-              queries: {
-                limit: 0,
-                filters: `tags[contains]${tag.id}`
-              }
+    //   const categoryPages = await Promise.all(
+    //     categories.map((category) => {
+    //       return client.get({
+    //           endpoint: worksApiConfig.endpoint,
+    //           queries: {
+    //             limit: 0,
+    //             filters: `category[equals]${category.id}`
+    //           }
 
-          })
-            .then((res) => {
-              return range(1, Math.ceil(res.totalCount / postsForPage)).map((p) => ({
-                route: `/works/tag/${tag.id}/page/${p}`,
-              }))
-            })
-        })
-      )
-      const flattenTagPages = [].concat.apply([], tagPages)
+    //       })
+    //         .then((res) => {
+    //           return range(1, Math.ceil(res.totalCount / postsForPage)).map((p) => ({
+    //             route: `/works/${category.id}/${p}`,
+    //           }))
+    //         })
+    //     })
+    //   )
+    //   const flattenCategoryPages = [].concat.apply([], categoryPages)
 
-      // ルートの生成
-      routes = [
-        ...posts,
-        ...pages,
-        ...flattenCategoryPages,
-        ...flattenTagPages,
-      ]
 
-      return routes
-    },
+    //   // タグページの生成
+    //   // const tags = await client
+    //   //     .get({
+    //   //       endpoint: 'works-tags',
+    //   //       queries: {
+    //   //         fields: 'id',
+    //   //       }
+    //   //     })
+    //   //       .then((res) => {
+    //   //         return res.contents.map((content) => content.id)
+    //   //       })
+
+    //   // const tagPages = await Promise.all(
+    //   //   tags.map((tag) => {
+    //   //     return client.get({
+    //   //         endpoint: worksApiConfig.endpoint,
+    //   //         queries: {
+    //   //           limit: 0,
+    //   //           filters: `tags[contains]${tag.id}`
+    //   //         }
+
+    //   //     })
+    //   //       .then((res) => {
+    //   //         return range(1, Math.ceil(res.totalCount / postsForPage)).map((p) => ({
+    //   //           route: `/works/tag/${tag.id}/page/${p}`,
+    //   //         }))
+    //   //       })
+    //   //   })
+    //   // )
+    //   // const flattenTagPages = [].concat.apply([], tagPages)
+
+    //   // ルートの生成
+    //   routes = [
+    //     // ...posts,
+    //     // ...pages,
+    //     ...flattenCategoryPages,
+    //     // ...flattenTagPages,
+    //   ]
+
+    //   return routes
+    // },
   }, /* generate */
 
 

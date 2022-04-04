@@ -1,25 +1,26 @@
 <template>
   <div>
     about
+
   </div>
 </template>
 
 <script>
 export default {
-  name: '',
+  name: 'about',
 
   data () {
     return {
 
     }
-  }, /* data */
+  },
 
   computed: {
 
   }, /* computed */
 
   mounted () {
-    console.log('about.vue')
+
   }, /* mounted */
 
   methods: {

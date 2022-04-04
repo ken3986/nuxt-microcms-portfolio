@@ -9,5 +9,5 @@ export const client = createClient({
 export const worksApiConfig = {
   endpoint: 'works',
   getPostsLimit: 100,
-  postsForPage: 12,
+  postsForPage: 1,
 }

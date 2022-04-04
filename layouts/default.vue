@@ -21,7 +21,7 @@
 <script>
 
 export default {
-  name: 'works',
+  name: 'default',
 
   async fetch () {
     // カテゴリーリストの取得

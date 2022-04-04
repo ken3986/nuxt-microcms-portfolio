@@ -1,7 +1,7 @@
 <template>
   <div class="category">
 
-      <h2>{{ currentTag.name }}</h2>
+      <h2>{{ currentCategory.name }}</h2>
       <!-- 記事リスト -->
       <b-row>
         <b-col v-for="post in posts" :key="post.id" class="post" cols="12" md="6" lg="4">
@@ -37,7 +37,7 @@
           <Pagination
             :pager="pager"
             :current="Number(page)"
-            :tag="currentTag ? currentTag : null"
+            :category="currentCategory"
           ></Pagination>
         </b-col>
       </b-row>
@@ -48,24 +48,32 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import Mixin from '~/mixins/mixin'
 
 export default {
-
+  mixins: [Mixin],
   // layout: 'works',
 
   async fetch () {
-    this.fetchData()
+    // 1ページごとの投稿数設定を取得
+    const postsForPage = this.$config.worksApiConfig.postsForPage
+    // 現在のページ番号を取得
+    // console.log(this.$route.params)
+    const page = this.$route.params.p || '1'
+    // const page = this.$route.params.page || '1'
+    // カテゴリーIDを取得
+    const categoryId = this.$route.params.categoryId
 
+    const data = await this.getData({
+      postsForPage: postsForPage,
+      page: page,
+      categoryId: categoryId,
+    })
 
-
-    // カテゴリー情報を取得
-    // const category = await this.$microcms.get({
-    //   endpoint: 'works-categories',
-    //   queries: {
-    //     ids: categoryId
-    //   }
-    // })
-    // this.category = category.contents[0]
+    // 投稿一覧を反映
+    this.posts = data.contents
+    // 投稿数を反映
+    this.postsTotalCount = data.totalCount
   },
 
 
@@ -81,7 +89,6 @@ export default {
   computed: {
     ...mapGetters({
       worksCategories: 'works/getCategories',
-      worksTags: 'works/getTags',
     }),
 
     page () {
@@ -92,62 +99,34 @@ export default {
       return [...Array(Math.ceil(this.postsTotalCount / this.$config.postsForPage)).keys()]
     },
 
-
-    currentTag () {
-      const tagId = this.$route.params.tagId
-      const currentTag =
-      tagId !== undefined
-        ? this.worksTags.find((content) => content.id === tagId)
+    currentCategory () {
+      const categoryId = this.$route.params.categoryId
+      const currentCategory =
+      categoryId !== undefined
+        ? this.worksCategories.find((content) => content.id === categoryId)
         : undefined
-      return currentTag
-    }
+      return currentCategory
+    },
 
+
+
+  },
+
+  mounted () {
+    console.log(this.post)
+    console.log(this.$route.param)
   },
 
 
   methods: {
-    async fetchData () {
-    // 1ページごとの投稿数設定を取得
-    const postsForPage = this.$config.worksApiConfig.postsForPage
-    // 現在のページ番号を取得
-    const page = this.$route.query.page || '1'
-    // カテゴリーIDを取得
-    const categoryId = this.$route.params.categoryId
-    // タグIDを取得
-    const tagId = this.$route.params.tagId
+    // async fetchData () {
 
-    // 投稿の絞り込み
-    let queries = {}
-      // 1ページごとの投稿数設定を反映
-      queries.limit = postsForPage
-      // 現在のページにある投稿を反映
-      queries.offset = (page - 1) * postsForPage
-      // カテゴリーまたはタグで絞り込み
-      const postsFilter =
-        categoryId !== undefined
-          ? `category[equals]${categoryId}`
-          : tagId !== undefined
-          ? `tags[contains]${tagId}`
-          : undefined
-      queries.filters = postsFilter
-
-    // 投稿を取得
-    const data = await this.$microcms.get({
-      endpoint: `works`,
-      queries: queries
-    })
-
-    // 投稿一覧を反映
-    this.posts = data.contents
-    // 投稿数を反映
-    this.postsTotalCount = data.totalCount
-    }
+    // }
   }, /* methods */
 
   watch: {
-    // 同一コンポーネントやクエリの変更でも画面を更新するよう監視
     $route () {
-      this.fetchData()
+      this.$fetch()
     }
   }
 }
@@ -156,13 +135,16 @@ export default {
 
 
 
-<style lang="scss" scoped>
+<style lang="scss">
   .post {
     padding-bottom: 1em;
   }
   .post-card {
     height: 100%;
 
+  }
+  body {
+    background-color: #000;
   }
 
 </style>
