@@ -1,7 +1,6 @@
 <template>
   <div>
     about
-
   </div>
 </template>
 
@@ -20,7 +19,7 @@ export default {
   }, /* computed */
 
   mounted () {
-
+    console.log(this.$route)
   }, /* mounted */
 
   methods: {
