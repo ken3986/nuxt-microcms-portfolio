@@ -23,23 +23,23 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import WorksMixin from '@/mixins/works'
+import worksMixin from '~/mixins/worksMixin'
 
 export default {
   layout: 'works',
 
-  mixins: [ WorksMixin, ],
+  mixins: [ worksMixin, ],
 
   async fetch () {
-    console.log(this.$route)
-    const result = await this.getData({
-      categoryId: this.$route.params.id,
-      postsForPage: this.$config.worksApiConfig.postsForPage,
-      page: this.$route.params.p || 1,
-    })
+    // console.log(this.$route)
+    // const result = await this.getData({
+    //   categoryId: this.$route.params.id,
+    //   postsForPage: this.$config.worksApiConfig.postsForPage,
+    //   page: this.$route.params.p || 1,
+    // })
 
-    this.posts = result.contents
-    this.postsTotalCount = result.totalCount
+    // this.posts = result.contents
+    // this.postsTotalCount = result.totalCount
   },
 
   data () {
@@ -50,9 +50,9 @@ export default {
   }, /* data */
 
   computed: {
-    ...mapGetters({
-      worksCategories: 'works/getCategories',
-    }),
+    // ...mapGetters({
+    //   worksCategories: 'works/getCategories',
+    // }),
 
     page () {
       const page = this.$route.params.p || '1'

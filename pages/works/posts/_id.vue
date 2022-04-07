@@ -39,43 +39,43 @@ export default {
   // layout: 'works',
 
   async asyncData(context) {
-    const post =
-    //  context.payload ||
-     await context.$microcms.getListDetail({
-      endpoint: 'works',
-      contentId: context.params.id
-    })
+    // const post =
+    // //  context.payload ||
+    //  await context.$config.works_client.getListDetail({
+    //   endpoint: 'works',
+    //   contentId: context.params.id
+    // })
 
-    if (!post) {
-      return context.error({ statusCode: '404', message: 'お探しのページは見つかりませんでした' })
-    }
+    // if (!post) {
+    //   return context.error({ statusCode: '404', message: 'お探しのページは見つかりませんでした' })
+    // }
 
-    // シンタックスハイライト処理
-    let richText = ''
-    if (post.richText) {
-      const $ = cheerio.load(post.richText)
-      $('pre code').each((__, elm) => {
-        const result = hljs.highlightAuto($(elm).text())
-        $(elm).html(result.value)
-        $(elm).addClass('hljs')
-      })
-      richText = $.html()
-    }
+    // // シンタックスハイライト処理
+    // let richText = ''
+    // if (post.richText) {
+    //   const $ = cheerio.load(post.richText)
+    //   $('pre code').each((__, elm) => {
+    //     const result = hljs.highlightAuto($(elm).text())
+    //     $(elm).html(result.value)
+    //     $(elm).addClass('hljs')
+    //   })
+    //   richText = $.html()
+    // }
 
-    let body = ''
-    if (post.body) {
-      body = post.body.map(item => ({...item}))
-      body.map((item, i) => {
-        item.id = i
-        return item
-      })
-    }
+    // let body = ''
+    // if (post.body) {
+    //   body = post.body.map(item => ({...item}))
+    //   body.map((item, i) => {
+    //     item.id = i
+    //     return item
+    //   })
+    // }
 
-    return {
-      ...post,
-      richText: richText,
-      body: body
-    }
+    // return {
+    //   ...post,
+    //   richText: richText,
+    //   body: body
+    // }
   },
 
   mounted () {

@@ -19,40 +19,42 @@
 </template>
 
 <script>
+// console.log($config)
 
 export default {
   name: 'works',
 
   async fetch () {
-    // カテゴリーリストの取得
-    const categories = await this.$microcms.get({
-      endpoint: `works-categories`,
-      queries: {
-        limit: 1000,
-      }
-    })
-    // カテゴリーリストの登録
-    this.$store.commit('works/setCategories', categories.contents)
+    // // カテゴリーリストの取得
+    // const categories = await this.$worksClient.get({
+    //   endpoint: `works-categories`,
+    //   queries: {
+    //     limit: 1000,
+    //   }
+    // })
+    // console.log(categories)
+    // // カテゴリーリストの登録
+    // this.$store.commit('works/setCategories', categories.contents)
 
-    // タグリストの取得
-    const tags = await this.$microcms.get({
-      endpoint: `works-tags`,
-      queries: {
-        limit: 1000,
-      }
-    })
-    // タグリストの登録
-    this.$store.commit('works/setTags', tags.contents)
+    // // タグリストの取得
+    // const tags = await this.$config.works_client.get({
+    //   endpoint: `works-tags`,
+    //   queries: {
+    //     limit: 1000,
+    //   }
+    // })
+    // // タグリストの登録
+    // this.$store.commit('works/setTags', tags.contents)
 
-    // 投稿リストの取得
-    const posts = await this.$microcms.get({
-      endpoint: `works`,
-      queries: {
-        limit: 1000,
-      }
-    })
-    // タグリストの登録
-    this.$store.commit('works/setPosts', posts.contents)
+    // // 投稿リストの取得
+    // const posts = await this.$config.works_client.get({
+    //   endpoint: `works`,
+    //   queries: {
+    //     limit: 1000,
+    //   }
+    // })
+    // // タグリストの登録
+    // this.$store.commit('works/setPosts', posts.contents)
   },
 
   data () {

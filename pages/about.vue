@@ -19,7 +19,7 @@ export default {
   }, /* computed */
 
   mounted () {
-    console.log(this.$route)
+    // console.log(this.$route)
   }, /* mounted */
 
   methods: {

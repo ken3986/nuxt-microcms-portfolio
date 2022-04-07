@@ -3,7 +3,7 @@ import Fiber from 'fibers'
 import axios from 'axios'
 
 import {
-  client,
+  worksClient,
   worksApiConfig,
  } from './utils/microcms.js'
 
@@ -43,6 +43,10 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     // '@/plugins/constants',
+    {
+      src: '@/plugins/microcms',
+      mode: process.env.NODE_ENV === 'production' ? 'server' : 'all',
+    },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -60,7 +64,7 @@ export default {
     '@nuxtjs/axios',
     '@nuxt/http',
     'bootstrap-vue/nuxt',
-    '@nuxtjs/proxy'
+    '@nuxtjs/proxy',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -95,25 +99,26 @@ export default {
   },
 
   privateRuntimeConfig: {
-    // client: client,
-    // apiKey: process.env.API_KEY,
+    WORKS_SERVICE_DOMAIN: process.env.WORKS_SERVICE_DOMAIN,
+    WORKS_API_KEY: process.env.WORKS_API_KEY,
   },
   publicRuntimeConfig: {
     siteName: 'ポートフォリオ',
-    apiUrl: process.env.API_URL,
     worksApiConfig: worksApiConfig,
     postsForPage: worksApiConfig.postsForPage,
+    WORKS_SERVICE_DOMAIN: process.env.NODE_ENV !== 'production' ? process.env.WORKS_SERVICE_DOMAIN : undefined,
+    WORKS_API_KEY: process.env.NODE_ENV !== 'production' ? process.env.WORKS_API_KEY : undefined,
   },
 
-  buildModules: ['nuxt-microcms-module'],
+  // buildModules: ['nuxt-microcms-module'],
 
-  microcms: {
-    options: {
-      serviceDomain: process.env.SERVICE_DOMAIN,
-      apiKey: process.env.API_KEY,
-    },
-    mode: process.env.NODE_ENV === 'production' ? 'server' : 'all',
-  },
+  // microcms: {
+  //   options: {
+  //     serviceDomain: process.env.SERVICE_DOMAIN,
+  //     apiKey: process.env.API_KEY,
+  //   },
+  //   mode: process.env.NODE_ENV === 'production' ? 'server' : 'all',
+  // },
 
   generate: {
     // async routes () {

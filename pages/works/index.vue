@@ -1,6 +1,7 @@
 <template>
   <div class="works-index">
     実績
+    {{ posts }}
     <div v-for="categorisedPostsList in categorisedPostsLists" :key="categorisedPostsList.id">
       <div class="category-block mb-3">
         <div class="category-block-header">
@@ -62,28 +63,43 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import Mixin from '~/mixins/works'
+import worksMixin from '~/mixins/worksMixin'
 
 export default {
-  mixins: [Mixin],
+  // mixins: [worksMixin],
   // layout: 'works',
 
   async fetch () {
-      // 投稿を取得
-      let array = []
-      for (const [index, category] of this.worksReferencedCategories.entries()) {
-        const posts = await this.getData({
-          categoryId: category.id
-        })
-        const item = {
-          category: category,
-          posts: posts,
-          id: index,
-        }
-        array.push(item)
-      }
 
-      this.categorisedPostsLists = array
+//     const { createClient } = require('microcms-js-sdk')
+//     // const { WORKS_API_KEY, WORKS_SERVICE_DOMAIN } = process.env
+// const worksClient = createClient({
+//   serviceDomain: 'teten-portfolio-works',
+//   apiKey: '6e54ec41a72446ffb1a04afcbf6383a732fe'
+// })
+//     // console.log(this.$config)
+//     worksClient.get({
+//     endpoint: 'works',
+//     // contentId: 'contentId',
+//     // queries: { fields: 'title,publishedAt' },
+//   })
+//   .then((res) => console.log(res))
+//   .catch((err) => console.log(err));
+      // // 投稿を取得
+      // let array = []
+      // for (const [index, category] of this.worksReferencedCategories.entries()) {
+      //   const posts = await this.getData({
+      //     categoryId: category.id
+      //   })
+      //   const item = {
+      //     category: category,
+      //     posts: posts,
+      //     id: index,
+      //   }
+      //   array.push(item)
+      // }
+
+      // this.categorisedPostsLists = array
   },
 
   data () {
@@ -101,9 +117,9 @@ export default {
   computed: {
     ...mapGetters({
       // worksPosts: 'works/getPosts',
-      worksCategories: 'works/getCategories',
-      worksTags: 'works/getTags',
-      worksReferencedCategories: 'works/getReferencedCategories',
+      // worksCategories: 'works/getCategories',
+      // worksTags: 'works/getTags',
+      // worksReferencedCategories: 'works/getReferencedCategories',
     }),
   },
 
