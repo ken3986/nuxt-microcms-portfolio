@@ -59,6 +59,7 @@ export default {
     top: $site-header-space;
     border: 1px solid #aaa;
     padding: 15px;
+    background-color: #fff;
 
     aside {
       padding: 15px 0;

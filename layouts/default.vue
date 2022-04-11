@@ -24,19 +24,19 @@ export default {
   name: 'default',
 
   async fetch () {
-    // カテゴリーリストの取得
-    const categories = await this.$microcms.get({
-      endpoint: `works-categories`,
-    })
-    // カテゴリーリストの登録
-    this.$store.commit('works/setCategories', categories.contents)
+    // // カテゴリーリストの取得
+    // const categories = await this.$config.works_client.get({
+    //   endpoint: `works-categories`,
+    // })
+    // // カテゴリーリストの登録
+    // this.$store.commit('works/setCategories', categories.contents)
 
-    // タグリストの取得
-    const tags = await this.$microcms.get({
-      endpoint: `works-tags`,
-    })
-    // タグリストの登録
-    this.$store.commit('works/setTags', tags.contents)
+    // // タグリストの取得
+    // const tags = await this.$config.works_client.get({
+    //   endpoint: `works-tags`,
+    // })
+    // // タグリストの登録
+    // this.$store.commit('works/setTags', tags.contents)
   },
 
   data () {

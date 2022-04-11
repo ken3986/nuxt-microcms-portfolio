@@ -1,7 +1,8 @@
 <template>
   <div>
-    about
-
+    <h2>{{ page.title }}</h2>
+    <div v-html="page.richText"></div>
+    <!-- {{ page }} -->
   </div>
 </template>
 
@@ -9,9 +10,21 @@
 export default {
   name: 'about',
 
+  layout: 'works',
+
+  async fetch () {
+    const page = await this.$generalClient.get({
+      endpoint: 'page',
+      queries: {
+        ids: 'about'
+      }
+    })
+    this.page = page.contents[0]
+  },
+
   data () {
     return {
-
+      page: {}
     }
   },
 
@@ -20,7 +33,7 @@ export default {
   }, /* computed */
 
   mounted () {
-
+    // console.log(this.$route)
   }, /* mounted */
 
   methods: {
@@ -30,6 +43,10 @@ export default {
 }
 </script>
 
-<style>
+
+
+
+
+<style lang="scss" scoped>
 
 </style>

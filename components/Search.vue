@@ -1,5 +1,6 @@
 <template>
-  <b-nav-form
+<div>
+  <!-- <b-nav-form
     @submit.prevent="search"
   >
     <b-form-input
@@ -14,8 +15,29 @@
       size="sm"
       class="my-2 my-sm-0"
       type="submit"
-    >↓</b-button>
+    ><b-icon-arrow-up></b-icon-arrow-up></b-button>
+  </b-nav-form> -->
+
+  <b-nav-form
+    @submit.prevent="search"
+  >
+
+    <b-input-group size="sm" class="mb-2">
+      <b-input-group-prepend is-text>
+        <b-icon icon="search"></b-icon>
+      </b-input-group-prepend>
+      <b-form-input
+        type="search"
+        placeholder="Search"
+        @keypress="setSearchable"
+        v-model="searchWord"
+      ></b-form-input>
+    </b-input-group>
+
   </b-nav-form>
+
+</div>
+
 
 </template>
 

@@ -2,16 +2,10 @@
 <!-- 記事詳細ページ -->
 
   <main class="main">
-    <!-- <NuxtLink
-      :to="`/`"
-    >HOME</NuxtLink> -->
-    <!-- <p>個別</p> -->
+
     <!-- タイトル -->
-    <h1 class="title" v-if="title">タイトル{{ title }}</h1>
-    <!-- 公開日 -->
-    <!-- <p class="publishedAt" v-if="publishedAt">{{ publishedAt }}</p> -->
-    <!-- 本文 -->
-    <!-- <div class="content" v-if="content" v-html="content"></div> -->
+    <h1 class="title" v-if="title">{{ title }}</h1>
+
 
     <div v-if="body" class="post-body">
       <div v-for="item in body" :key="item.id">
@@ -36,12 +30,10 @@ import hljs from 'highlight.js'
 export default {
   name: '',
 
-  // layout: 'works',
+  layout: 'works',
 
   async asyncData(context) {
-    const post =
-    //  context.payload ||
-     await context.$microcms.getListDetail({
+    const post = await context.$worksClient.getListDetail({
       endpoint: 'works',
       contentId: context.params.id
     })
@@ -79,7 +71,7 @@ export default {
   },
 
   mounted () {
-    console.log('mounted')
+
   },
 
   data () {
