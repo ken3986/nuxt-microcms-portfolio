@@ -9,14 +9,11 @@ const worksApiConfig = {
   postsForPage: 6,
 }
 
-// console.log($config)
-
 export default {
   methods: {
-    async getData ({
+    async getWorksPosts ({
       categoryId: categoryId,
       tagId: tagId,
-      postsForPage: postsForPage,
       page: page,
     } = {}) {
       const { WORKS_SERVICE_DOMAIN, WORKS_API_KEY } = this.$config
@@ -28,15 +25,11 @@ export default {
       // 投稿の絞り込み
       let queries = {}
         // 1ページごとの投稿数設定を反映
-        queries.limit = postsForPage ? postsForPage : worksApiConfig.postsForPage
-        queries.offset = page ? page : 0
-        // if (postsForPage) {
-        //   queries.limit = postsForPage
-        //   // 現在のページにある投稿を反映
-        //   if (page) {
-        //     queries.offset = (page - 1) * postsForPage
-        //   }
-        // }
+        const limit = worksApiConfig.postsForPage
+        const offset = page ? (page - 1) * limit : 0
+        queries.limit = limit
+        queries.offset = offset
+
         // カテゴリーまたはタグで絞り込み
         const postsFilter =
           categoryId !== undefined
@@ -45,7 +38,7 @@ export default {
             ? `tags[contains]${tagId}`
             : undefined
         queries.filters = postsFilter
-
+      console.log(queries);
       // 投稿を取得
       const data = await worksClient.get({
         endpoint: 'works',
@@ -53,6 +46,17 @@ export default {
       })
 
       return data
-    }
-  }
+    }, /* getWorksPosts */
+  }, /* methods */
+
+  computed: {
+    page () {
+      const page = this.$route.params.p || '1'
+      return page
+    },
+    pager () {
+      return [...Array(Math.ceil(this.postsTotalCount / worksApiConfig.postsForPage)).keys()]
+    },
+
+  }, /* computed */
 }

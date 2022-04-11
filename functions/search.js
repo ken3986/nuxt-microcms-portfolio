@@ -1,4 +1,4 @@
-const { client, worksApiConfig } = require('../utils/microcms')
+const { worksClient, worksApiConfig } = require('../utils/microcms')
 
 exports.handler = async (event) => {
   const { q } = event.queryStringParameters
@@ -16,7 +16,7 @@ exports.handler = async (event) => {
     limit: worksApiConfig.getPostsLimit,
   }
 
-  return client
+  return worksClient
     .get({
       endpoint: 'works',
       queries:  query,

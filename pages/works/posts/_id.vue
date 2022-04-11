@@ -2,16 +2,10 @@
 <!-- 記事詳細ページ -->
 
   <main class="main">
-    <!-- <NuxtLink
-      :to="`/`"
-    >HOME</NuxtLink> -->
-    <!-- <p>個別</p> -->
+
     <!-- タイトル -->
     <h1 class="title" v-if="title">{{ title }}</h1>
-    <!-- 公開日 -->
-    <!-- <p class="publishedAt" v-if="publishedAt">{{ publishedAt }}</p> -->
-    <!-- 本文 -->
-    <!-- <div class="content" v-if="content" v-html="content"></div> -->
+
 
     <div v-if="body" class="post-body">
       <div v-for="item in body" :key="item.id">
@@ -36,50 +30,48 @@ import hljs from 'highlight.js'
 export default {
   name: '',
 
-  // layout: 'works',
+  layout: 'works',
 
   async asyncData(context) {
-    // const post =
-    // //  context.payload ||
-    //  await context.$config.works_client.getListDetail({
-    //   endpoint: 'works',
-    //   contentId: context.params.id
-    // })
+    const post = await context.$worksClient.getListDetail({
+      endpoint: 'works',
+      contentId: context.params.id
+    })
 
-    // if (!post) {
-    //   return context.error({ statusCode: '404', message: 'お探しのページは見つかりませんでした' })
-    // }
+    if (!post) {
+      return context.error({ statusCode: '404', message: 'お探しのページは見つかりませんでした' })
+    }
 
-    // // シンタックスハイライト処理
-    // let richText = ''
-    // if (post.richText) {
-    //   const $ = cheerio.load(post.richText)
-    //   $('pre code').each((__, elm) => {
-    //     const result = hljs.highlightAuto($(elm).text())
-    //     $(elm).html(result.value)
-    //     $(elm).addClass('hljs')
-    //   })
-    //   richText = $.html()
-    // }
+    // シンタックスハイライト処理
+    let richText = ''
+    if (post.richText) {
+      const $ = cheerio.load(post.richText)
+      $('pre code').each((__, elm) => {
+        const result = hljs.highlightAuto($(elm).text())
+        $(elm).html(result.value)
+        $(elm).addClass('hljs')
+      })
+      richText = $.html()
+    }
 
-    // let body = ''
-    // if (post.body) {
-    //   body = post.body.map(item => ({...item}))
-    //   body.map((item, i) => {
-    //     item.id = i
-    //     return item
-    //   })
-    // }
+    let body = ''
+    if (post.body) {
+      body = post.body.map(item => ({...item}))
+      body.map((item, i) => {
+        item.id = i
+        return item
+      })
+    }
 
-    // return {
-    //   ...post,
-    //   richText: richText,
-    //   body: body
-    // }
+    return {
+      ...post,
+      richText: richText,
+      body: body
+    }
   },
 
   mounted () {
-    console.log('mounted')
+
   },
 
   data () {

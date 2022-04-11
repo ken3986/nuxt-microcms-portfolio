@@ -25,22 +25,21 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import worksMixin from '~/mixins/worksMixin'
+import WorksMixin from '@/mixins/worksMixin'
 
 export default {
   layout: 'works',
 
-  mixins: [ worksMixin ],
+  mixins: [ WorksMixin ],
 
   async fetch () {
-    // const result = await this.getData({
-    //   tagId: this.$route.params.id,
-    //   postsForPage: this.$config.worksApiConfig.postsForPage,
-    //   page: this.$route.params.p || 1,
-    // })
+    const result = await this.getWorksPosts({
+      tagId: this.$route.params.id,
+      page: this.$route.params.p
+    })
 
-    // this.posts = result.contents
-    // this.postsTotalCount = result.totalCount
+    this.posts = result.contents
+    this.postsTotalCount = result.totalCount
   },
 
 
@@ -52,18 +51,9 @@ export default {
   },
 
   computed: {
-    // ...mapGetters({
-    //   worksTags: 'works/getTags',
-    // }),
-
-    page () {
-      const page = this.$route.params.p || '1'
-      return page
-    },
-    pager () {
-      return [...Array(Math.ceil(this.postsTotalCount / this.$config.postsForPage)).keys()]
-    },
-
+    ...mapGetters({
+      worksTags: 'works/getTags',
+    }),
 
     currentTaxonomy () {
       const currentId = this.$route.params.id

@@ -29,19 +29,20 @@
 
 <script>
 import axios from 'axios'
+import WorksMixin from '@/mixins/worksMixin'
 
 export default {
   name: 'SearchResults',
 
   layout: 'works',
 
+  mixins: [ WorksMixin ],
+
   data () {
     return {
       searchable: true,
       posts: this.posts || [],
       postsTotalCount: this.postsTotalCount || 0,
-      categories: this.categories || [],
-      // pager: this.pager || [],
       loading: true,
       q: this.$route.query.q,
 
@@ -50,13 +51,6 @@ export default {
   }, /* data */
 
   computed: {
-    page () {
-      const page = this.$route.query.p || '1'
-      return page
-    },
-    pager () {
-      return [...Array(Math.ceil(this.postsTotalCount / this.$config.postsForPage)).keys()]
-    },
 
   }, /* computed */
 

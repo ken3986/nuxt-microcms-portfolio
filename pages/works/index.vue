@@ -1,7 +1,6 @@
 <template>
   <div class="works-index">
     実績
-    {{ posts }}
     <div v-for="categorisedPostsList in categorisedPostsLists" :key="categorisedPostsList.id">
       <div class="category-block mb-3">
         <div class="category-block-header">
@@ -50,11 +49,11 @@
           >
             more
           </NuxtLink>
-        </div>
+        </div> <!-- .category-block-footer -->
 
 
 
-      </div>
+      </div> <!-- .category-block -->
 
     </div>
   </div>
@@ -63,63 +62,42 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import worksMixin from '~/mixins/worksMixin'
 
 export default {
-  // mixins: [worksMixin],
-  // layout: 'works',
+
+  layout: 'works',
 
   async fetch () {
+    // console.log(this.$test)
+    // 投稿を取得
+    let array = []
+    for (const [index, category] of this.referencedCategories.entries()) {
+      const posts = await this.$worksClient.get({
+        endpoint: 'works',
+        queries: {
+          filters: `category[equals]${category.id}`
+        }
+      })
+      const item = {
+        category: category,
+        posts: posts,
+        id: index,
+      }
+      array.push(item)
+    }
 
-//     const { createClient } = require('microcms-js-sdk')
-//     // const { WORKS_API_KEY, WORKS_SERVICE_DOMAIN } = process.env
-// const worksClient = createClient({
-//   serviceDomain: 'teten-portfolio-works',
-//   apiKey: '6e54ec41a72446ffb1a04afcbf6383a732fe'
-// })
-//     // console.log(this.$config)
-//     worksClient.get({
-//     endpoint: 'works',
-//     // contentId: 'contentId',
-//     // queries: { fields: 'title,publishedAt' },
-//   })
-//   .then((res) => console.log(res))
-//   .catch((err) => console.log(err));
-      // // 投稿を取得
-      // let array = []
-      // for (const [index, category] of this.worksReferencedCategories.entries()) {
-      //   const posts = await this.getData({
-      //     categoryId: category.id
-      //   })
-      //   const item = {
-      //     category: category,
-      //     posts: posts,
-      //     id: index,
-      //   }
-      //   array.push(item)
-      // }
-
-      // this.categorisedPostsLists = array
+    this.categorisedPostsLists = array
   },
 
   data () {
     return {
-      posts: [],
-      postsTotalCount: 0,
-      categoryId: '',
-      tagId: '',
-
-      category: {},
       categorisedPostsLists: [],
     }
   },
 
   computed: {
     ...mapGetters({
-      // worksPosts: 'works/getPosts',
-      // worksCategories: 'works/getCategories',
-      // worksTags: 'works/getTags',
-      // worksReferencedCategories: 'works/getReferencedCategories',
+      referencedCategories: 'works' + '/getReferencedCategories',
     }),
   },
 

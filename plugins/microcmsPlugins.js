@@ -7,7 +7,14 @@ export default function ({ $config }, inject) {
     apiKey: WORKS_API_KEY,
   })
 
+  const worksApiConfig = {
+    endpoint: 'works',
+    getPostsLimit: 100,
+    postsForPage: 6,
+  }
+
   inject('worksClient', worksClient)
+  inject('worksApiConfig', worksApiConfig)
 
   const { GENERAL_SERVICE_DOMAIN, GENERAL_API_KEY } = $config
   const generalClient = createClient({
@@ -15,5 +22,14 @@ export default function ({ $config }, inject) {
     apiKey: GENERAL_API_KEY,
   })
 
+  const pageApiConfig = {
+    endpoint: 'works',
+    getPostsLimit: 100,
+    postsForPage: 1,
+  }
+
   inject('generalClient', generalClient)
+  inject('pageApiConfig', pageApiConfig)
+
+  inject('test', process.env)
 }
