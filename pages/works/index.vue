@@ -68,7 +68,6 @@ export default {
   layout: 'works',
 
   async fetch () {
-    // console.log(this.$test)
     // 投稿を取得
     let array = []
     for (const [index, category] of this.referencedCategories.entries()) {

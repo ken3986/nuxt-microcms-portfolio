@@ -3,9 +3,16 @@
 /*------------------------------*/
 /* リセット系 */
 /*------------------------------*/
-*{
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
+
+html, body {
+    height: 100%;
+}
+
 html, body, ul, figure{
     margin: 0;
 }
@@ -14,6 +21,7 @@ img{
     vertical-align: bottom;
     max-width: 100%;
     max-height: 100%;
+    height: auto;
 }
 ul{
     list-style: none;
@@ -32,6 +40,14 @@ a {
         color: inherit;
     }
 }
+h1,h2,h3,h4,h5,strong {
+    font-weight: bold;
+}
+input, textarea {
+    max-width: 100%;
+    font-family: inherit;
+    font-size: 100%;
+}
 
 /*------------------------------*/
 /* 汎用系 */
@@ -41,33 +57,33 @@ a {
     content: '';
     clear: both;
 }
+.visuallyHidden {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    bottom: 0;
+    padding: 0;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    margin: -1px;
+}
 
 /*------------------------------*/
 /* 全体のスタイル */
 /*------------------------------*/
-.my_container{
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 15px;
-
-    @media(min-width: 568px){
-        max-width: 540px;
-        padding: 0;
-    }
-    @media(min-width: 768px){
-        max-width: 720px;
-    }
-    @media(min-width: 992px){
-        max-width: 960px;
-    }
-    @media(min-width: 1200px){
-        max-width: 1140px;
-    }
-}
-
 body {
-    background-color: #eee;
+    font-family: $font-base;
+    font-size: fz(16);
+    line-height: 1.5;
+    color: $text-color-primary;
+    letter-spacing: 0.05em;
+    background-color: $color-body-background;
 }
+
 
 /*------------------------------*/
 /* ウィジェットのスタイル */
@@ -82,19 +98,7 @@ body {
 /*------------------------------*/
 /* ヘッダーブロックのスタイル */
 /*------------------------------*/
-$site-header-height: 50px;
-$site-header-space: $site-header-height + 20px;
 
-.site-header {
-  position: fixed;
-  z-index: 100;
-  width: 100%;
-  top: 0;
-}
-
-body {
-  padding-top: 70px;
-}
 
 /*------------------------------*/
 /* メインブロックのスタイル */

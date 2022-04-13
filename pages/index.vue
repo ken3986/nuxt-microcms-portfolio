@@ -1,8 +1,7 @@
 <template>
-  <div class="home">
-
-      <h1>トップページ</h1>
-
+  <div id="home">
+    <Works></Works>
+    <About></About>
 
 
   </div>
@@ -10,13 +9,17 @@
 
 
 <script>
+import Works from '~/pages/works/index.vue'
+import About from '~/pages/about.vue'
 
 export default {
 
-  layout: 'works',
+  components: {
+    Works,
+    About,
+  },
 
   async fetch () {
-
 
   },
 

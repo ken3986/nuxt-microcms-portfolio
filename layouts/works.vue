@@ -1,7 +1,7 @@
 <template>
   <!-- Worksレイアウト -->
-  <div>
-    <Header></Header>
+  <div class="site-wrapper">
+    <Header class="site-header"></Header>
       <div class="site-content">
         <b-container>
           <b-row>
@@ -14,7 +14,7 @@
           </b-row>
         </b-container>
       </div>
-    <Footer></Footer>
+    <Footer class="site-footer"></Footer>
   </div>
 </template>
 
@@ -25,35 +25,7 @@ export default {
   name: 'works',
 
   async fetch () {
-    // カテゴリーリストの取得
-    const categories = await this.$worksClient.get({
-      endpoint: `works-categories`,
-      queries: {
-        limit: 1000,
-      }
-    })
-    // カテゴリーリストの登録
-    this.$store.commit('works/setCategories', categories.contents)
 
-    // タグリストの取得
-    const tags = await this.$worksClient.get({
-      endpoint: `works-tags`,
-      queries: {
-        limit: 1000,
-      }
-    })
-    // タグリストの登録
-    this.$store.commit('works/setTags', tags.contents)
-
-    // 投稿リストの取得
-    const posts = await this.$worksClient.get({
-      endpoint: `works`,
-      queries: {
-        limit: 1000,
-      }
-    })
-    // 投稿リストの登録
-    this.$store.commit('works/setPosts', posts.contents)
   },
 
   data () {
@@ -79,11 +51,25 @@ export default {
 
 
 
-<style lang="scss">
-  .post {
-    padding-bottom: 1em;
-  }
-  .post-card {
-    height: 100%;
-  }
+<style lang="scss" scoped>
+.site-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+$site-header-height: 4em;
+
+.site-header {
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  height: $site-header-height;
+}
+
+.site-content {
+  flex-grow: 1;
+  padding-top: $site-header-height;
+}
+
 </style>

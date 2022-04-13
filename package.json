@@ -23,17 +23,20 @@
     "highlight.js": "^11.3.1",
     "microcms-js-sdk": "^2.0.0",
     "nuxt": "^2.15.8",
-    "nuxt-microcms-module": "^2.0.0"
+    "nuxt-microcms-module": "^2.0.0",
+    "nuxt-webfontloader": "^1.1.0",
+    "ress": "^5.0.2"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.14.7",
     "@nuxt/http": "^0.6.4",
     "@nuxtjs/eslint-config": "^6.0.1",
     "@nuxtjs/eslint-module": "^3.0.2",
+    "@nuxtjs/style-resources": "^1.2.1",
     "bootstrap-vue": "^2.21.2",
     "fibers": "^5.0.0",
     "netlify-lambda": "^2.0.15",
-    "sass": "^1.43.4",
+    "sass": "1.32.13",
     "sass-loader": "10.1.1"
   }
 }

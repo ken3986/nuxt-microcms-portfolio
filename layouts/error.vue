@@ -1,6 +1,6 @@
 <template>
   <div>
-    エラー
+    ページが見つかりません。
   </div>
 </template>
 

@@ -1,8 +1,8 @@
 <template>
   <footer class="footer">
-    <div class="container">
-      <p class="text-muted text-right">Place sticky footer content here.</p>
-    </div>
+      <p class="text-muted text-center">@2022 {{ $SITE_NAME }}</p>
+    <!-- <div class="container">
+    </div> -->
   </footer>
 </template>
 
@@ -44,23 +44,12 @@ body {
 }
 
 .footer {
-  position: absolute;
-  bottom: 0;
   width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
+  height: 3em;
+  padding: 1em;
   background-color: #f5f5f5;
-    /* Custom page CSS
-    -------------------------------------------------- */
-    /* Not required for template or sticky footer method. */
-
-    .container {
-      width: auto;
-      padding: 0 15px;
-    }
-    .container .text-muted {
-      margin: 20px 0;
-    }
+  font-size: fz(14);
+  font-family: $font-ubuntu;
 }
 
 

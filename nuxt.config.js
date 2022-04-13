@@ -25,13 +25,16 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/my_favicon/favicon.ico' },
+      { rel: 'apple-touch-icon', type: 'image/png', href: '/my_favicon/apple-touch-icon-180x180.png' },
+      { rel: 'icon', type: 'image/png', href: '/my_favicon/icon-192x192.png' },
     ]
-  },
+  }, /* head */
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    "~assets/scss/common.scss",
+    'ress',
+    "~assets/scss/style.scss",
     {
       src: '~/node_modules/highlight.js/styles/monokai-sublime.css',
       lang: 'css',
@@ -40,8 +43,9 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~/plugins/constants',
     {
-      src: '@/plugins/microcmsPlugins',
+      src: '~/plugins/microcmsPlugins',
       mode: process.env.NODE_ENV === 'production' ? 'server' : 'all',
     },
   ],
@@ -51,7 +55,7 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    // https://go.nuxtjs.dev/eslint
+    '@nuxtjs/style-resources',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -60,10 +64,26 @@ export default {
     '@nuxt/http',
     'bootstrap-vue/nuxt',
     '@nuxtjs/proxy',
+    'nuxt-webfontloader',
   ],
 
   bootstrapVue: {
-    icons: true
+    icons: true,
+    bootstrapCSS: false,
+    bootstrapVueCSS: false,
+  },
+
+  styleResources: {
+    scss: [
+      '~/assets/scss/_settings.scss',
+    ],
+    hoistUseStatements: true,
+  },
+
+  webfontloader: {
+    google: {
+      families: ['Ubuntu:wght@400,700&display=swap'],
+    }
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -95,7 +115,7 @@ export default {
         fs: "empty"
       }
     }
-  },
+  }, /* build */
 
   privateRuntimeConfig: {
     WORKS_SERVICE_DOMAIN: process.env.WORKS_SERVICE_DOMAIN,
@@ -104,7 +124,6 @@ export default {
     GENERAL_API_KEY: process.env.GENERAL_API_KEY,
   },
   publicRuntimeConfig: {
-    siteName: 'ポートフォリオ',
     worksApiConfig: worksApiConfig,
     WORKS_SERVICE_DOMAIN: process.env.NODE_ENV !== 'production' ? process.env.WORKS_SERVICE_DOMAIN : undefined,
     WORKS_API_KEY: process.env.NODE_ENV !== 'production' ? process.env.WORKS_API_KEY : undefined,
@@ -118,10 +137,12 @@ export default {
 
 
   router: {
-
-  },
+    middleware: [
+      'getWorks',
+    ]
+  }, /* router */
 
   proxy: {
     '/.netlify': 'http://localhost:9000'
-  },
+  }, /* proxy */
 }

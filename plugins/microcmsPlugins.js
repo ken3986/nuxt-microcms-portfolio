@@ -30,6 +30,4 @@ export default function ({ $config }, inject) {
 
   inject('generalClient', generalClient)
   inject('pageApiConfig', pageApiConfig)
-
-  inject('test', process.env)
 }

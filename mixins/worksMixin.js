@@ -38,7 +38,6 @@ export default {
             ? `tags[contains]${tagId}`
             : undefined
         queries.filters = postsFilter
-      console.log(queries);
       // 投稿を取得
       const data = await worksClient.get({
         endpoint: 'works',

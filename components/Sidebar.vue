@@ -56,7 +56,7 @@ export default {
 
   .sidebar {
     position: sticky;
-    top: $site-header-space;
+    // top: $site-header-space;
     border: 1px solid #aaa;
     padding: 15px;
     background-color: #fff;

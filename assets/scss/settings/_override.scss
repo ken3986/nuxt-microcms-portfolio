@@ -1,0 +1,24 @@
+/*------------------------------*/
+/* 変数の再定義 */
+/*------------------------------*/
+
+/*------------------------------*/
+/* 変数ファイルの読み込み */
+/*------------------------------*/
+@import 'bootstrap/scss/_functions.scss';
+@import 'bootstrap/scss/_variables.scss';
+@import 'bootstrap/scss/_mixins.scss';
+
+
+
+/*------------------------------*/
+/* ブレイクポイント */
+/*------------------------------*/
+$breakpoints: (
+  'xs': map-get($grid-breakpoints, 'xs'),
+  'sm': map-get($grid-breakpoints, 'sm'),
+  'md': map-get($grid-breakpoints, 'md'),
+  'lg': map-get($grid-breakpoints, 'lg'),
+  'xl': map-get($grid-breakpoints, 'xl'),
+  'xxl': map-get($grid-breakpoints, 'xxl'),
+) !default;
