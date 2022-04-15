@@ -5,6 +5,7 @@
       <b-col cols="4" lg="12">
         <NuxtLink
           to="/about"
+          title="Aboutページへ"
         >
           <img src="~/assets/image/shibanyan.png" alt="">
         </NuxtLink>

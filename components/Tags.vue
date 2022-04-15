@@ -9,6 +9,7 @@
             path: `/works/tag/${tag.id}/page/1`,
             }"
           class="link"
+          :class="{active: $route.params.id == tag.id}"
         >{{ tag.name }}</NuxtLink>
       </li>
     </ul>
@@ -55,13 +56,18 @@ export default {
 
   li {
     display: inline-block;
+    margin-right: 0.4em;
+    margin-bottom: 0.3em;
     a {
-      background-color: #ccc;
+      background-color: $secondary;
       color: #fff;
       padding: 0.2em 0.5em;
-      margin: 0 0.2em 0.5em;
       border-radius: 2px;
-      font-size: 12px;
+      font-size: fz(13);
+      &.active {
+        // background-color: $primary;
+        background-color: map-get($theme-colors, primary);
+      }
     }
   }
 </style>

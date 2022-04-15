@@ -1,61 +1,65 @@
 <template>
   <div class="works-index">
-    実績
-    <div v-for="categorisedPostsList in categorisedPostsLists" :key="categorisedPostsList.id">
-      <div class="category-block mb-3">
-        <div class="category-block-header">
-          <NuxtLink
-            :to="`/works/category/${categorisedPostsList.category.id}/page/1`"
-          >
-            <h2 class="category-block-title">{{ categorisedPostsList.category.name }}</h2>
-          </NuxtLink>
-        </div>
-        <div class="category-block-body">
-          <p>{{categorisedPostsList.category.description}}</p>
-          <div v-for="post in categorisedPostsList.posts.contents.slice(0,3)" :key="post.id">
-              <b-row class="category-block-post no-gutters">
-                <b-col md="3" class="category-block-post-thumbnail">
-                  <NuxtLink
-                    :to="`/works/posts/${post.id}`"
-                  >
-                    <figure
-                      class="category-block-post-thumbnail-wrapper"
-                    >
-                      <img
-                        class="category-block-post-thumbnail-image"
-                        :src="post.thumbnail ? post.thumbnail.url : 'https://picsum.photos/600/300/?image=25'" alt=""
+
+      <div v-if="categorisedPostsLists.length !== 0">
+        実績
+        <div v-for="categorisedPostsList in categorisedPostsLists" :key="categorisedPostsList.id">
+          <div class="category-block mb-3">
+            <div class="category-block-header">
+              <NuxtLink
+                :to="`/works/category/${categorisedPostsList.category.id}/page/1`"
+              >
+                <h2 class="category-block-title">{{ categorisedPostsList.category.name }}</h2>
+              </NuxtLink>
+            </div>
+            <div class="category-block-body">
+              <p>{{categorisedPostsList.category.description}}</p>
+              <div v-for="post in categorisedPostsList.posts.contents.slice(0,3)" :key="post.id">
+                  <b-row class="category-block-post no-gutters">
+                    <b-col md="3" class="category-block-post-thumbnail">
+                      <NuxtLink
+                        :to="`/works/posts/${post.id}`"
                       >
-                    </figure>
-                  </NuxtLink>
-                </b-col>
-                <b-col md="9" class="category-block-post-body">
-                  <NuxtLink
-                    :to="`/works/posts/${post.id}`"
-                  >
-                    <h4>{{ post.title }}</h4>
-                  </NuxtLink>
-                </b-col>
-              </b-row>
+                        <figure
+                          class="category-block-post-thumbnail-wrapper"
+                        >
+                          <img
+                            class="category-block-post-thumbnail-image"
+                            :src="post.thumbnail ? post.thumbnail.url : 'https://picsum.photos/600/300/?image=25'" alt=""
+                          >
+                        </figure>
+                      </NuxtLink>
+                    </b-col>
+                    <b-col md="9" class="category-block-post-body">
+                      <NuxtLink
+                        :to="`/works/posts/${post.id}`"
+                      >
+                        <h4>{{ post.title }}</h4>
+                      </NuxtLink>
+                    </b-col>
+                  </b-row>
 
 
-          </div>
+              </div>
 
-        </div> <!-- .category-block-body -->
+            </div> <!-- .category-block-body -->
 
-        <div class="category-block-footer">
-          <NuxtLink
-            :to="`/works/category/${categorisedPostsList.category.id}/page/1`"
-            class="category-block-more"
-          >
-            more
-          </NuxtLink>
-        </div> <!-- .category-block-footer -->
+            <div class="category-block-footer">
+              <NuxtLink
+                :to="`/works/category/${categorisedPostsList.category.id}/page/1`"
+                class="category-block-more"
+              >
+                more
+              </NuxtLink>
+            </div> <!-- .category-block-footer -->
 
 
 
-      </div> <!-- .category-block -->
+          </div> <!-- .category-block -->
 
-    </div>
+        </div>
+      </div>
+
   </div>
 </template>
 
@@ -86,6 +90,8 @@ export default {
     }
 
     this.categorisedPostsLists = array
+    this.loading = false
+    // this.$nuxt.$loading.finish()
   },
 
   data () {
@@ -168,5 +174,7 @@ export default {
       margin-right: 1em;
     }
   }
+
+
 
 </style>

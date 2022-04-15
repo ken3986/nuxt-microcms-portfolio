@@ -1,23 +1,20 @@
 <template>
   <header class="header">
-    <b-navbar toggleable="lg" type="dark" variant="info">
+    <b-navbar toggleable="lg" type="dark" variant="add">
       <b-navbar-brand :to="`/`" class="logo">{{ title }}</b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav class="header-menu">
-          <b-nav-item href="#">
-            <NuxtLink
-              :to="`/works`"
-              class="header-menu-link"
-            >Works</NuxtLink></b-nav-item>
-          <b-nav-item href="#">
-            <NuxtLink
-              :to="`/about`"
-              class="header-menu-link"
-            >About</NuxtLink>
-          </b-nav-item>
+          <b-nav-item
+            :to="`/works`"
+            class="header-menu-link"
+          >Works</b-nav-item>
+          <b-nav-item
+            :to="`/about`"
+            class="header-menu-link"
+          >About</b-nav-item>
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->
@@ -65,6 +62,12 @@ export default {
 
 
 <style lang="scss" scoped>
+.header {
+  box-shadow: 0 1px 7px darken($color-body-background, 40%);
+}
+.navbar {
+  height: 100%;
+}
 .logo {
   font-family: $font-ubuntu;
 }
@@ -93,9 +96,6 @@ export default {
     &::after {
       width: 100%;
     }
-  }
-  &.nuxt-link-active {
-    color: #fff;
   }
 }
 

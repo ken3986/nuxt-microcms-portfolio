@@ -1,18 +1,50 @@
 <template>
 <!-- 記事詳細ページ -->
 
-  <main class="main">
+  <main id="post-detail">
+    <!-- タグ -->
+    <ul class="post-tag-list">
+      <li v-for="tag in tags" :key="tag.id" class="post-tag-list-item">
+        <NuxtLink
+          :to="{
+            path: `/works/tag/${tag.id}/page/1`,
+          }"
+        >{{ tag.name }}</NuxtLink>
+      </li>
+    </ul>
 
     <!-- タイトル -->
-    <h1 class="title" v-if="title">{{ title }}</h1>
+    <h1 class="post-title" v-if="title">{{ title }}</h1>
 
 
     <div v-if="body" class="post-body">
       <div v-for="item in body" :key="item.id">
-        <div v-if="item.richText" v-html="item.richText"></div>
+        <!-- {{ item }} -->
+        <div
+          v-if="item.richText" v-html="item.richText"
+          class="post-body-text"
+        ></div>
 
-        <div v-if="item.modal_picture">
-          <img v-b-modal="'my-modal'" :src="item.modal_picture.url" alt="">
+        <figure class="modal-picture-wrapper" v-if="item.modal_picture">
+          <img class="modal-picture-image" v-b-modal="'my-modal'" :src="item.modal_picture.url" alt="">
+        </figure>
+
+
+        <div
+          v-if="item.gallery"
+        >
+          <b-row>
+            <b-col
+              v-for="picture in $numberIndex(item.gallery)"
+              :key="picture.id"
+              class="mb-4"
+              lg="6"
+            >
+              <figure v-if="picture.modal_picture">
+                <img :src="picture.modal_picture.url" alt="">
+              </figure>
+            </b-col>
+          </b-row>
         </div>
       </div>
       <!-- <div class="post-body-richText" v-if="body" v-html="body.richText"></div> -->
@@ -54,13 +86,9 @@ export default {
       richText = $.html()
     }
 
-    let body = ''
+    let body = []
     if (post.body) {
-      body = post.body.map(item => ({...item}))
-      body.map((item, i) => {
-        item.id = i
-        return item
-      })
+      body = context.$numberIndex(post.body)
     }
 
     return {
@@ -93,46 +121,76 @@ export default {
 
 
 <style lang="scss" scoped>
-.main {
-  // width: 960px;
-  margin: 0 auto;
+.post-tag-list {
+  &-item {
+    display: inline-block;
+    margin-right: 0.4em;
+    margin-bottom: 0.5em;
+    a {
+      padding: 0.2em 0.5em;
+      background-color: $secondary;
+      font-size: fz(12);
+      color: #fff;
+      border-radius: 2px;
+    }
+  }
 }
 
-.title {
-  margin-bottom: 20px;
+.post-title {
+  margin-bottom: 1rem;
+  background-color: #88c34b;
+  color: #fff;
+  padding: 0.75em 0.5em;
+  font-size: fz(30);
 }
 
 .publishedAt {
   margin-bottom: 40px;
 }
 
-.richText ::v-deep {
-  & > h1 {
+.post-body-text ::v-deep{
+  border: 1px solid #000;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 1em;
+  margin-bottom: 1em;
+
+  h1 {
     font-size: 30px;
-    font-weight: bold;
     margin: 40px 0 20px;
     background-color: #eee;
     padding: 10px 20px;
     border-radius: 5px;
   }
 
-  & > h2 {
-    font-size: 24px;
-    font-weight: bold;
-    margin: 40px 0 16px;
-    border-bottom: 1px solid #ddd;
+  h2 {
+    font-size: fz(24);
+    border-left: 7px solid map-get($theme-colors, primary);
+    // background-color: #f5e7bb;
+    padding: 0.2em 0.5em;
+    margin-bottom: 1em;
   }
 
-  & > p {
+  h3 {
+    font-size: fz(20);
+  }
+
+  p {
     line-height: 1.8;
     letter-spacing: 0.2px;
   }
 
-  & > ol {
+  ol {
     list-style-type: decimal;
     list-style-position: inside;
   }
+
+  a {
+    color: $blue;
+    text-decoration: underline;
+  }
 }
+
 
 
 </style>

@@ -12,6 +12,7 @@
       <b-row>
         <b-col>
           <Pagination
+            v-show="pageNum > 1"
             :pager="pager"
             :current="Number(page)"
             :tag="currentTaxonomy"

@@ -1,6 +1,6 @@
 <template>
 <!-- サイドバーコンポーネント -->
-  <div class="sidebar">
+  <div id="sidebar">
       <aside>
         <Profile></Profile>
       </aside>
@@ -54,12 +54,12 @@ export default {
 <style lang="scss" scoped>
   @import "~assets/scss/common.scss";
 
-  .sidebar {
+  #sidebar {
     position: sticky;
     // top: $site-header-space;
-    border: 1px solid #aaa;
+    // border: 1px solid #aaa;
     padding: 15px;
-    background-color: #fff;
+    background-color: #f4eec0;
 
     aside {
       padding: 15px 0;

@@ -58,7 +58,7 @@ export default {
   min-height: 100vh;
 }
 
-$site-header-height: 4em;
+$site-header-height: 3rem;
 
 .site-header {
   position: fixed;
@@ -69,7 +69,9 @@ $site-header-height: 4em;
 
 .site-content {
   flex-grow: 1;
-  padding-top: $site-header-height;
+  padding-top: $site-header-height + 2rem;
 }
+
+
 
 </style>

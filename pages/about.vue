@@ -1,8 +1,9 @@
 <template>
   <div>
-    <h2>{{ page.title }}</h2>
-    <div v-html="page.richText"></div>
-    <!-- {{ page }} -->
+    <div v-if="Object.keys(page).length">
+      <h2>{{ page.title }}</h2>
+      <div v-html="page.richText"></div>
+    </div>
   </div>
 </template>
 
@@ -20,11 +21,13 @@ export default {
       }
     })
     this.page = page.contents[0]
+    this.loading = false
   },
 
   data () {
     return {
-      page: {}
+      page: {},
+      tran: false,
     }
   },
 
@@ -33,7 +36,7 @@ export default {
   }, /* computed */
 
   mounted () {
-    // console.log(this.$route)
+
   }, /* mounted */
 
   methods: {

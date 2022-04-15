@@ -49,12 +49,18 @@ export default {
   }, /* methods */
 
   computed: {
+    // 現在のページ数
     page () {
       const page = this.$route.params.p || '1'
       return page
     },
+    // 全てのページ番号
     pager () {
       return [...Array(Math.ceil(this.postsTotalCount / worksApiConfig.postsForPage)).keys()]
+    },
+    // 総ページ数
+    pageNum () {
+      return Math.ceil(this.postsTotalCount / worksApiConfig.postsForPage)
     },
 
   }, /* computed */

@@ -1,6 +1,6 @@
 <template>
   <footer class="footer">
-      <p class="text-muted text-center">@2022 {{ $SITE_NAME }}</p>
+      <p class="text-center">@2022 {{ $SITE_NAME }}</p>
     <!-- <div class="container">
     </div> -->
   </footer>
@@ -45,11 +45,17 @@ body {
 
 .footer {
   width: 100%;
-  height: 3em;
+  height: 5em;
   padding: 1em;
-  background-color: #f5f5f5;
+  background-color: #7e6752;
   font-size: fz(14);
   font-family: $font-ubuntu;
+  color: #8d8d8d;
+  display: flex;
+  align-items: center;
+  p {
+    margin: 0 auto;
+  }
 }
 
 

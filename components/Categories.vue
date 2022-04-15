@@ -10,6 +10,7 @@
             path: `/works/category/${category.id}/page/1`,
             }"
           class="link"
+          :class="{active: $route.params.id == category.id}"
         >{{ category.name }}（{{ category.referenced }}）</NuxtLink>
         <!-- <NuxtLink
           :to="{
@@ -63,5 +64,7 @@ export default {
 
 
 <style lang="scss" scoped>
-
+.active {
+  color: $primary;
+}
 </style>
