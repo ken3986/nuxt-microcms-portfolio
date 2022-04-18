@@ -1,9 +1,11 @@
 <template>
-  <div>
-    <div v-if="Object.keys(page).length">
-      <h2>{{ page.title }}</h2>
-      <div v-html="page.richText"></div>
-    </div>
+  <div id="about">
+    <article v-if="Object.keys(page).length">
+      <h2 class="page-title">{{ page.title }}</h2>
+      <div class="page-content">
+        <div v-html="page.richText"></div>
+      </div>
+    </article>
   </div>
 </template>
 
@@ -51,5 +53,15 @@ export default {
 
 
 <style lang="scss" scoped>
-
+  #about::v-deep {
+    .page-content {
+      padding: 1em;
+      border: 1px solid #aaa;
+      box-shadow: 1px 1px 3px #aaa;
+      background-color: #fff;
+      h3 {
+        font-size: fz(18);
+      }
+    }
+  }
 </style>

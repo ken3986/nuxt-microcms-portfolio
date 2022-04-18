@@ -7,7 +7,7 @@
           to="/about"
           title="Aboutページへ"
         >
-          <img src="~/assets/image/shibanyan.png" alt="">
+          <img src="~/assets/img/shibanyan.png" alt="">
         </NuxtLink>
       </b-col>
       <b-col cols="8" lg="12">

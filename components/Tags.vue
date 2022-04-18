@@ -64,10 +64,14 @@ export default {
       padding: 0.2em 0.5em;
       border-radius: 2px;
       font-size: fz(13);
+      text-decoration: none;
       &.active {
         // background-color: $primary;
         background-color: map-get($theme-colors, primary);
       }
     }
   }
+.link:hover {
+  background-color: $primary;
+}
 </style>

@@ -2,6 +2,12 @@
 <!-- 記事詳細ページ -->
 
   <main id="post-detail">
+
+
+
+    <!-- タイトル -->
+    <h1 class="post-title" v-if="title">{{ title }}</h1>
+
     <!-- タグ -->
     <ul class="post-tag-list">
       <li v-for="tag in tags" :key="tag.id" class="post-tag-list-item">
@@ -13,13 +19,8 @@
       </li>
     </ul>
 
-    <!-- タイトル -->
-    <h1 class="post-title" v-if="title">{{ title }}</h1>
-
-
     <div v-if="body" class="post-body">
       <div v-for="item in body" :key="item.id">
-        <!-- {{ item }} -->
         <div
           v-if="item.richText" v-html="item.richText"
           class="post-body-text"
@@ -40,9 +41,13 @@
               class="mb-4"
               lg="6"
             >
-              <figure v-if="picture.modal_picture">
+              <enlargeable-image
+                :src="picture.modal_picture.url"
+                :src_large="picture.modal_picture.url"
+              ></enlargeable-image>
+              <!-- <figure v-if="picture.modal_picture">
                 <img :src="picture.modal_picture.url" alt="">
-              </figure>
+              </figure> -->
             </b-col>
           </b-row>
         </div>
@@ -137,7 +142,7 @@ export default {
 }
 
 .post-title {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   background-color: #88c34b;
   color: #fff;
   padding: 0.75em 0.5em;
@@ -190,6 +195,8 @@ export default {
     text-decoration: underline;
   }
 }
+
+
 
 
 

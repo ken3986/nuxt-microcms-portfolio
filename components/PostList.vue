@@ -99,7 +99,8 @@ export default {
     height: 230px;
       &:hover {
         filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.6));
-        transform: rotateZ(15deg);
+        transform: translate(0, -5px);
+        transition: transform, 0.2s;
       }
     &-to {
       color: inherit;

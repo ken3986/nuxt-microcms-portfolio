@@ -67,4 +67,7 @@ export default {
 .active {
   color: $primary;
 }
+.link:hover {
+  color: $primary;
+}
 </style>

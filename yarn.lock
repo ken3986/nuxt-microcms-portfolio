@@ -958,6 +958,11 @@
   resolved "https://registry.npmjs.org/@csstools/convert-colors/-/convert-colors-1.4.0.tgz"
   integrity "sha1-rUldxBsS511YjG24uYNPCPoTHrc= sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw=="
 
+"@diracleo/vue-enlargeable-image@^0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@diracleo/vue-enlargeable-image/-/vue-enlargeable-image-0.0.7.tgz#d1b9d9519effebb868c3840188a4d867e1507977"
+  integrity sha512-nwrDbNQPDptwj4QRUdhvCwOfHW3ZLitaCZfjx7i+OsF1LiVcbHCgikbzrkORqCXSY3caCu+gPftElNXk37cwoQ==
+
 "@gar/promisify@^1.0.1":
   version "1.1.3"
   resolved "https://registry.npmjs.org/@gar/promisify/-/promisify-1.1.3.tgz"

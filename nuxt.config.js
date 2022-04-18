@@ -45,6 +45,7 @@ export default {
   plugins: [
     '~/plugins/constants',
     '~/plugins/commonPlugins',
+    '~/plugins/enlargeableImage',
     {
       src: '~/plugins/microcmsPlugins',
       mode: process.env.NODE_ENV === 'production' ? 'server' : 'all',

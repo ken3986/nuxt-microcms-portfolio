@@ -1,25 +1,28 @@
 <template>
-  <div class="works-index">
+  <div id="works-index">
 
-      <div v-if="categorisedPostsLists.length !== 0">
-        実績
+      <section v-if="categorisedPostsLists.length !== 0">
+        <h2 class="page-title">実績</h2>
+
         <div v-for="categorisedPostsList in categorisedPostsLists" :key="categorisedPostsList.id">
           <div class="category-block mb-3">
             <div class="category-block-header">
-              <NuxtLink
-                :to="`/works/category/${categorisedPostsList.category.id}/page/1`"
-              >
-                <h2 class="category-block-title">{{ categorisedPostsList.category.name }}</h2>
-              </NuxtLink>
+              <h2 class="category-block-title">{{ categorisedPostsList.category.name }}</h2>
             </div>
+
             <div class="category-block-body">
-              <p>{{categorisedPostsList.category.description}}</p>
-              <div v-for="post in categorisedPostsList.posts.contents.slice(0,3)" :key="post.id">
-                  <b-row class="category-block-post no-gutters">
-                    <b-col md="3" class="category-block-post-thumbnail">
-                      <NuxtLink
-                        :to="`/works/posts/${post.id}`"
-                      >
+              <!-- カテゴリー解説 -->
+              <p v-if="categorisedPostsList.category.description">{{categorisedPostsList.category.description}}</p>
+
+              <!-- カテゴリー投稿 -->
+              <div v-for="post in categorisedPostsList.posts.contents.slice(0,3)" :key="post.id" class="category-block-posts">
+                <article class="category-block-post">
+                  <NuxtLink
+                    :to="`/works/posts/${post.id}`"
+                  >
+                    <b-row class="no-gutters">
+                      <b-col md="3" class="category-block-post-thumbnail">
+                        <!-- サムネイル -->
                         <figure
                           class="category-block-post-thumbnail-wrapper"
                         >
@@ -28,16 +31,16 @@
                             :src="post.thumbnail ? post.thumbnail.url : 'https://picsum.photos/600/300/?image=25'" alt=""
                           >
                         </figure>
-                      </NuxtLink>
-                    </b-col>
-                    <b-col md="9" class="category-block-post-body">
-                      <NuxtLink
-                        :to="`/works/posts/${post.id}`"
-                      >
-                        <h4>{{ post.title }}</h4>
-                      </NuxtLink>
-                    </b-col>
-                  </b-row>
+                      </b-col>
+                      <b-col md="9" class="category-block-post-text">
+                        <!-- タイトル -->
+                          <h4 v-if="post.title" class="category-block-post-title">{{ post.title }}</h4>
+                          <!-- 抜粋 -->
+                          <p v-if="post.excerpt">{{ post.excerpt }}</p>
+                      </b-col>
+                    </b-row>
+                  </NuxtLink>
+                </article>
 
 
               </div>
@@ -57,8 +60,8 @@
 
           </div> <!-- .category-block -->
 
-        </div>
-      </div>
+        </div> <!-- categorisedPostsList -->
+      </section> <!-- categorisedPostsLists -->
 
   </div>
 </template>
@@ -122,9 +125,8 @@ export default {
 <style lang="scss" scoped>
   .category-block {
     border-bottom: 1px solid #000;
-    // padding: 1em 0;
     border: 1px solid #000;
-    border-radius: 5px;
+    background-color: #fff;
     &-header {
       background-color: rgb(48, 187, 106);
       padding: 1em 0.5em;
@@ -140,38 +142,55 @@ export default {
     }
   }
 
-  .category-block-post {
-    height: 100px;
+  .category-block-posts {
     &:not(:last-child) {
-      margin: 1em 0;
+      margin-bottom: 1rem;
     }
+  }
+  .category-block-post {
+    $height: 100px;
+    border: 1px solid #000;
+
+    &:hover {
+      filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.6));
+      background-color: $primary;
+      transform: translate(0, -5px);
+      transition: transform, 0.2s
+    }
+
     &-thumbnail {
       height: 100%;
     }
     &-thumbnail-wrapper {
-      height: 100%;
-      overflow: hidden;
+      height: $height;
       text-align: center;
       background-color: rgb(222, 226, 218);
-      &:hover {
-        filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.6));
-      }
-    }
-    &-thumbnail-image {
-      object-fit: cover;
-      height: 100%;
     }
 
-    &-body {
-      background-color: #fff;
+
+    &-text {
+      padding: 1em;
+    }
+
+    &-title {
+      font-size: fz(18);
+    }
+
+    a {
+      text-decoration: none;
     }
   }
+
   .category-block-footer {
-    background-color: #fff;
-    padding: 0.5em;
+    background-color: $secondary;
     text-align: right;
     .category-block-more {
-      margin-right: 1em;
+      padding: 0.5em 1em;
+      display: block;
+      text-decoration: none;
+      &:hover {
+        background-color: lighten($secondary, 10%);
+      }
     }
   }
 

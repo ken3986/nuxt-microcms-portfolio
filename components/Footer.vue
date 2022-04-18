@@ -1,8 +1,6 @@
 <template>
   <footer class="footer">
-      <p class="text-center">@2022 {{ $SITE_NAME }}</p>
-    <!-- <div class="container">
-    </div> -->
+      <p class="text-center">Copyright © {{ $SITE_NAME }}, all right reserved.</p>
   </footer>
 </template>
 

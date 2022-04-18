@@ -2,9 +2,7 @@
   <div class="site-wrapper">
     <Header class="site-header"></Header>
       <div class="site-content">
-        <b-container>
-          <Nuxt></Nuxt>
-        </b-container>
+        <Nuxt></Nuxt>
       </div>
     <Footer class="site-footer"></Footer>
   </div>

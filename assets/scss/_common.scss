@@ -84,6 +84,14 @@ body {
     background-color: $color-body-background;
 }
 
+.page-title {
+    margin-bottom: 1rem;
+    background-color: #88c34b;
+    color: #fff;
+    padding: 0.75em 0.5em;
+    font-size: fz(30);
+  }
+
 
 /*------------------------------*/
 /* ウィジェットのスタイル */
@@ -119,3 +127,10 @@ body {
 .page-enter, .page-leave-to {
     opacity: 0;
 }
+
+
+.enlargeable-image .full.enlarging,
+.enlargeable-image .full.enlarged,
+.enlargeable-image .full.delarging {
+    z-index:1000 !important;
+  }
