@@ -14,15 +14,24 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'nuxt-microcms-test',
+    title: 'Portfolio',
     htmlAttrs: {
-      lang: 'ja'
+      lang: 'ja',
+      prefix: "og: http://ogp.me/ns#",
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { hid: 'description', name: 'description', content: '個人用ポートフォリオサイトです。' },
+      { name: 'format-detection', content: 'telephone=no' },
+      { hid: 'og:url', property: 'og:url', content: process.env.BASE_URL },
+      { hid: 'og:type', property: 'og:type', content: 'website|article' },
+      { hid: 'og:title', property: 'og:title', content: 'Portfolio' },
+      { hid: 'og:description', property: 'og:description', content: '個人用ポートフォリオサイトです。' },
+      { hid: 'og:site_name', property: 'og:site_name', content: 'Portfolio' },
+      { hid: 'og:image', property: 'og:image', content: process.env.BASE_URL + '/img/shibanyan.jpg' },
+      { hid: 'og:locale', property: 'og:locale', content: 'ja_JP' },
+      { name: 'twitter:card', content: "summary" },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/my_favicon/favicon.ico' },

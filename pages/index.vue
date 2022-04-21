@@ -1,26 +1,12 @@
 <template>
   <div id="home">
-    <section class="site-mv">
-      <img src="~/assets/img/shibahu.png" alt="">
-      <h1 class="site-mv-title">Portfolio</h1>
-      <p class="site-mv-sbuTitle"></p>
-    </section>
-    <b-container>
-      <b-row>
-        <b-col lg="9">
-          <section>
-            <Works></Works>
-          </section>
-          <section>
-            <About></About>
-          </section>
-        </b-col>
-        <b-col lg="3">
-          <Sidebar></Sidebar>
-        </b-col>
-      </b-row>
-    </b-container>
 
+    <section>
+      <About></About>
+    </section>
+    <section>
+      <Works></Works>
+    </section>
 
   </div>
 </template>
@@ -37,6 +23,8 @@ export default {
     About,
   },
 
+  layout: 'works',
+
   async fetch () {
 
   },
@@ -52,7 +40,7 @@ export default {
   },
 
   mounted () {
-    console.log(this.$route)
+
   },
 
   methods: {
