@@ -2,18 +2,28 @@
   <!-- Worksレイアウト -->
   <div class="site-wrapper">
     <Header class="site-header"></Header>
-      <div class="site-content">
-        <b-container>
-          <b-row>
-            <b-col lg="9" class="mb-4">
-              <Nuxt></Nuxt>
-            </b-col>
-            <b-col lg="3">
-              <Sidebar></Sidebar>
-            </b-col>
-          </b-row>
-        </b-container>
+
+    <transition name="mv">
+      <div class="site-mv" v-if="$route.name == 'index'">
+        <img src="~/assets/img/shibahu.jpg" alt="">
+        <h1 class="site-mv-title">Portfolio</h1>
+        <p class="site-mv-sbuTitle"></p>
       </div>
+    </transition>
+
+    <div class="site-content">
+      <b-container>
+        <b-row>
+          <b-col lg="9" class="mb-4">
+            <Nuxt></Nuxt>
+          </b-col>
+          <b-col lg="3">
+            <Sidebar></Sidebar>
+          </b-col>
+        </b-row>
+      </b-container>
+    </div>
+
     <Footer class="site-footer"></Footer>
   </div>
 </template>
@@ -71,6 +81,37 @@ $site-header-height: 3rem;
   flex-grow: 1;
   padding-top: $site-header-height + 2rem;
 }
+
+.site-mv {
+  overflow: hidden;
+  height: 500px;
+  position: relative;
+  img {
+    max-height: none;
+    width: 100%;
+  }
+  &-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-family: $font-ubuntu;
+  }
+}
+
+
+.mv-enter-active {
+  transition: all .3s ease;
+}
+.mv-leave-active {
+  transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.mv-enter, .mv-leave-to {
+  height: 0;
+  opacity: 0;
+}
+
 
 
 

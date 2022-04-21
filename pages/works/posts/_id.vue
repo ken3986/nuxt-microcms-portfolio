@@ -26,11 +26,6 @@
           class="post-body-text"
         ></div>
 
-        <figure class="modal-picture-wrapper" v-if="item.modal_picture">
-          <img class="modal-picture-image" v-b-modal="'my-modal'" :src="item.modal_picture.url" alt="">
-        </figure>
-
-
         <div
           v-if="item.gallery"
         >

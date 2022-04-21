@@ -12,10 +12,12 @@
       </b-col>
       <b-col cols="8" lg="12">
         <p>東京都在住、デザイナー/コーダーです。お仕事募集中。</p>
-        <a href="https://github.com/ken3986" title="github">
-          <b-icon icon="github" font-scale="2"></b-icon>
-        </a>
-        <!-- <p>naka_ken8686@yahoo.co.jp</p> -->
+        <div>
+          <a href="https://github.com/ken3986" title="github">
+            <b-icon icon="github" font-scale="2"></b-icon> Github
+          </a>
+          <p></p>
+        </div>
       </b-col>
     </b-row>
   </div>
