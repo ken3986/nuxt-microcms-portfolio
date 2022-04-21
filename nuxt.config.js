@@ -24,6 +24,7 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '個人用ポートフォリオサイトです。' },
       { name: 'format-detection', content: 'telephone=no' },
+
       { hid: 'og:url', property: 'og:url', content: process.env.BASE_URL },
       { hid: 'og:type', property: 'og:type', content: 'website|article' },
       { hid: 'og:title', property: 'og:title', content: 'Portfolio' },
@@ -31,6 +32,7 @@ export default {
       { hid: 'og:site_name', property: 'og:site_name', content: 'Portfolio' },
       { hid: 'og:image', property: 'og:image', content: process.env.BASE_URL + '/img/shibanyan.jpg' },
       { hid: 'og:locale', property: 'og:locale', content: 'ja_JP' },
+
       { name: 'twitter:card', content: "summary" },
     ],
     link: [
