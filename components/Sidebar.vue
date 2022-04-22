@@ -60,6 +60,7 @@ export default {
     // border: 1px solid #aaa;
     padding: 15px;
     background-color: #f4eec0;
+    margin-bottom: 1rem;
 
     aside {
       padding: 15px 0;

@@ -68,13 +68,13 @@ export default {
   min-height: 100vh;
 }
 
-$site-header-height: 3rem;
+$site-header-height: fz(50);
 
 .site-header {
   position: fixed;
   width: 100%;
   z-index: 100;
-  height: $site-header-height;
+  // height: $site-header-height;
 }
 
 .site-content {
@@ -84,8 +84,13 @@ $site-header-height: 3rem;
 
 .site-mv {
   overflow: hidden;
-  height: 500px;
+  height: 400px;
+  @include mq (map-get($breakpoints, 'md')) {
+    height: 200px;
+  }
   position: relative;
+  margin-top: $site-header-height;
+  margin-bottom: -2rem;
   img {
     max-height: none;
     width: 100%;

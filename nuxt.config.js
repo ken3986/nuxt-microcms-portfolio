@@ -15,6 +15,7 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'Portfolio',
+    titleTemplate: '%s | Portfolio',
     htmlAttrs: {
       lang: 'ja',
       prefix: "og: http://ogp.me/ns#",
@@ -26,7 +27,7 @@ export default {
       { name: 'format-detection', content: 'telephone=no' },
 
       { hid: 'og:url', property: 'og:url', content: process.env.BASE_URL },
-      { hid: 'og:type', property: 'og:type', content: 'website|article' },
+      { hid: 'og:type', property: 'og:type', content: 'article' },
       { hid: 'og:title', property: 'og:title', content: 'Portfolio' },
       { hid: 'og:description', property: 'og:description', content: '個人用ポートフォリオサイトです。' },
       { hid: 'og:site_name', property: 'og:site_name', content: 'Portfolio' },

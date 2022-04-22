@@ -26,12 +26,16 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import WorksMixin from '@/mixins/worksMixin'
+import worksMixin from '~/mixins/worksMixin'
+import meta from '~/mixins/metaMixin'
 
 export default {
   layout: 'works',
 
-  mixins: [ WorksMixin ],
+  mixins: [
+    worksMixin,
+    meta,
+  ],
 
   async fetch () {
     const result = await this.getWorksPosts({
@@ -41,13 +45,23 @@ export default {
 
     this.posts = result.contents
     this.postsTotalCount = result.totalCount
+
+    this.$set(this.meta, 'title', this.currentTaxonomy.name)
   },
+
+  // head () {
+  //   return {
+  //     title: this.currentTaxonomy.name,
+  //   }
+  // },
 
 
   data () {
     return {
       posts: [],
       postsTotalCount: 0,
+
+      meta: {},
     }
   },
 

@@ -5,7 +5,7 @@
       <About></About>
     </section>
     <section>
-      <Works></Works>
+      <CategorisedPostsLists></CategorisedPostsLists>
     </section>
 
   </div>
@@ -13,17 +13,14 @@
 
 
 <script>
-import Works from '~/pages/works/index.vue'
-import About from '~/pages/about.vue'
+import meta from '~/mixins/metaMixin'
 
 export default {
-
-  components: {
-    Works,
-    About,
-  },
-
   layout: 'works',
+
+  mixins: [
+    meta,
+  ],
 
   async fetch () {
 
@@ -31,7 +28,11 @@ export default {
 
   data () {
     return {
-
+      meta: {
+        title: this.$SITE_NAME,
+        titleTemplate: '%s',
+        ogType: 'website',
+      }
     }
   },
 
@@ -56,21 +57,5 @@ export default {
 section {
   margin-bottom: 2rem;
 }
-.site-mv {
-  overflow: hidden;
-  height: 600px;
-  position: relative;
-  img {
-    max-height: none;
-    width: 100%;
-  }
-  &-title {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #fff;
-    font-family: $font-ubuntu;
-  }
-}
+
 </style>

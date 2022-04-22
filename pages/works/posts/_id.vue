@@ -59,10 +59,16 @@
 import cheerio from 'cheerio'
 import hljs from 'highlight.js'
 
+import metaMixin from '~/mixins/metaMixin'
+
 export default {
   name: '',
 
   layout: 'works',
+
+  mixins: [
+    metaMixin,
+  ],
 
   async asyncData(context) {
     const post = await context.$worksClient.getListDetail({
@@ -91,10 +97,21 @@ export default {
       body = context.$numberIndex(post.body)
     }
 
+    // メタデータの設定
+    const headMeta = {}
+    if (post.title) {
+      headMeta.title = post.title
+    }
+    if (post.thumbnail) {
+      headMeta.image = post.thumbnail.url
+    }
+
+
     return {
       ...post,
       richText: richText,
-      body: body
+      body: body,
+      meta: headMeta,
     }
   },
 
