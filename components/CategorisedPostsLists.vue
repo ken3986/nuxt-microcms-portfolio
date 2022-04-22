@@ -15,7 +15,7 @@
               <p v-if="categorisedPostsList.category.description">{{categorisedPostsList.category.description}}</p>
 
               <!-- カテゴリー投稿 -->
-              <div v-for="post in categorisedPostsList.posts.contents.slice(0,3)" :key="post.id" class="category-block-posts">
+              <div v-for="post in categorisedPostsList.posts.contents" :key="post.id" class="category-block-posts">
                 <article class="category-block-post">
                   <NuxtLink
                     :to="`/works/posts/${post.id}`"

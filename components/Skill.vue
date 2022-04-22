@@ -1,9 +1,14 @@
 <template>
-  <div id="about">
+  <div id="skill">
     <article v-if="Object.keys(page).length">
       <h2 class="page-title">{{ page.title }}</h2>
       <div class="page-content">
-        <div v-html="page.richText"></div>
+        <b-row class="lists no-gutters">
+          <b-col v-for="list in $numberIndex(page.lists)" :key="list.id" cols="4" class="list">
+            <div v-html="list.richText"></div>
+          </b-col>
+
+        </b-row>
       </div>
     </article>
   </div>
@@ -12,12 +17,12 @@
 <script>
 
 export default {
-  name: 'about',
+  name: 'skill',
 
   async fetch () {
     const page = await this.$generalClient.get({
       endpoint: 'pages',
-      contentId: 'about',
+      contentId: 'skill',
     })
     this.page = page
   },
@@ -48,15 +53,22 @@ export default {
 
 
 <style lang="scss" scoped>
-  #about::v-deep {
+  ::v-deep {
     .page-content {
-      padding: 1em;
-      border: 1px solid #aaa;
-      box-shadow: 1px 1px 3px #aaa;
-      background-color: #fff;
-      h3 {
-        font-size: fz(18);
+      .list {
+        padding: 1em;
+        border: 1px solid #aaa;
+        box-shadow: 1px 1px 3px #aaa;
+        background-color: #fff;
+        margin-bottom: 1rem;
+        h3 {
+          font-size: fz(18);
+        }
       }
     }
+
+    // .list {
+    //   margin-bottom: 1rem;
+    // }
   }
 </style>

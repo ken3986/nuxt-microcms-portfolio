@@ -1,6 +1,11 @@
 <template>
   <div id="about-page">
-    <About></About>
+    <section>
+      <About></About>
+    </section>
+    <section>
+      <Skill></Skill>
+    </section>
   </div>
 </template>
 
@@ -45,5 +50,7 @@ export default {
 
 
 <style lang="scss" scoped>
-
+section {
+  margin-bottom: 2rem;
+}
 </style>
