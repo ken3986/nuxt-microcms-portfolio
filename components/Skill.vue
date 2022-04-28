@@ -2,14 +2,14 @@
   <div id="skill">
     <article v-if="Object.keys(page).length">
       <h2 class="page-title">{{ page.title }}</h2>
-      <div class="page-content">
-        <b-row class="lists no-gutters">
+      <b-container class="page-content">
+        <b-row class="lists">
           <b-col v-for="list in $numberIndex(page.lists)" :key="list.id" cols="4" class="list">
             <div v-html="list.richText"></div>
           </b-col>
 
         </b-row>
-      </div>
+      </b-container>
     </article>
   </div>
 </template>

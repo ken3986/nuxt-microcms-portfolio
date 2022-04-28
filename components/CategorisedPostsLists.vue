@@ -12,7 +12,7 @@
 
             <div class="category-block-body">
               <!-- カテゴリー解説 -->
-              <p v-if="categorisedPostsList.category.description">{{categorisedPostsList.category.description}}</p>
+              <div v-if="categorisedPostsList.category.description" v-html="categorisedPostsList.category.description"></div>
 
               <!-- カテゴリー投稿 -->
               <div v-for="post in categorisedPostsList.posts.contents" :key="post.id" class="category-block-posts">
@@ -166,6 +166,9 @@ export default {
 
     &-text {
       padding: 1em;
+      p {
+        font-size: fz(14);;
+      }
     }
 
     &-title {

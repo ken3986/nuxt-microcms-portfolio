@@ -97,14 +97,17 @@ export default {
     background-color: #fff;
     border-radius: 5px;
     height: 230px;
+    filter: drop-shadow(3px 3px 3px rgba(0,0,0,0.6));
       &:hover {
         filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.6));
         transform: translate(0, -5px);
         transition: transform, 0.2s;
       }
     &-to {
+      display: block;
       color: inherit;
       text-decoration: none;
+      height: 100%;
     }
     &-thumbnail {
       height: 70%;
@@ -115,7 +118,7 @@ export default {
         text-align: center;
       }
       &-image {
-        object-fit: cover;
+        object-fit: contain;
         height: 100%;
       }
     }

@@ -62,6 +62,7 @@ export default {
       src: '~/plugins/microcmsPlugins',
       mode: process.env.NODE_ENV === 'production' ? 'server' : 'all',
     },
+    // { src: '@/plugins/fakeBasicAuth', mode: 'client' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -101,7 +102,9 @@ export default {
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    proxy: true,
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
@@ -143,6 +146,7 @@ export default {
     WORKS_API_KEY: process.env.NODE_ENV !== 'production' ? process.env.WORKS_API_KEY : undefined,
     GENERAL_SERVICE_DOMAIN: process.env.NODE_ENV !== 'production' ? process.env.GENERAL_SERVICE_DOMAIN : undefined,
     GENERAL_API_KEY: process.env.NODE_ENV !== 'production' ? process.env.GENERAL_API_KEY : undefined,
+    BASIC_PASSWORD: 'basicpassword',
   },
 
   generate: {
@@ -157,6 +161,17 @@ export default {
   }, /* router */
 
   proxy: {
-    '/.netlify': 'http://localhost:9000'
+    // '/.netlify': 'http://localhost:9000'
+    // '/api': 'http://localhost:9000'
+    // '/api': {
+    //   target: 'http://localhost:9000',
+    //   pathRewrite: {
+    //     '/api': '/.netlify'
+    //   }
+    // }
+    '/.netlify': {
+      target: 'http://localhost:9000',
+      pathRewrite: {'^/.netlify/functions': ''},
+    },
   }, /* proxy */
 }
