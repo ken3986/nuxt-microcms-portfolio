@@ -188,7 +188,7 @@ export default {
     // }
     '/.netlify': {
       target: 'http://localhost:9000',
-      pathRewrite: {'^/.netlify/functions': ''},
+      // pathRewrite: {'^/.netlify/functions': ''},
     },
   }, /* proxy */
 }

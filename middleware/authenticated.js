@@ -13,8 +13,8 @@ export default async ({ store, redirect, route, $axios, app }) => {
 
   console.log(app.$cookies.get('teten-portfolio'))
 console.log('authenticated')
-// const hello = await $axios.get('/.netlify/functions/hello')
-// console.log(hello)
+const hello = await $axios.get('/.netlify/functions/hello')
+console.log(hello)
   // 認証パスを持っている場合
   // if (app.$cookies.get('teten-portfolio')) {
   //   const response = await $axios.post('/.netlify/functions/authentication', {
