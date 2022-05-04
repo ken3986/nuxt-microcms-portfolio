@@ -71,7 +71,7 @@ export default {
         return
       }
       this.loadingStart()
-      const { data, error }  = await axios
+      const { data, error } = await axios
         .get(`/.netlify/functions/search?q=${q}`)
         .catch((error) => ({ error }))
       this.loadingFinish()
