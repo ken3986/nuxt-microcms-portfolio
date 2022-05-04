@@ -32,7 +32,7 @@ const fakeBasicAuth = async () => {
 
   const result = await axios
     // .get(`/.netlify/functions/basicAuth?password=${inputPassword}`)
-    .get(`/api/basicAuth.js?password=${inputPassword}`)
+    .get(`/.netlify/functions/basicAuth.js?password=${inputPassword}`)
     .catch((error) => ({ error }))
   console.log(result)
 

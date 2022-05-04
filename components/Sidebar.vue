@@ -45,11 +45,8 @@ export default {
 
   methods: {
     async test () {
-      console.log('test')
-      // const result = await this.$axios.get(`/.netlify/functions/hello?q=testtest`)
-      // const result = await this.$axios.get(`/api/functions/hello`)
-      const result = await this.$axios.get(`/.netlify/functions/hello`)
-      console.log(result)
+
+
     }
   } /* methods */
 

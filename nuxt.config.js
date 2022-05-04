@@ -80,6 +80,7 @@ export default {
     'bootstrap-vue/nuxt',
     '@nuxtjs/proxy',
     'nuxt-webfontloader',
+    'cookie-universal-nuxt'
   ],
 
   bootstrapVue: {
@@ -104,6 +105,20 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     proxy: true,
+  },
+
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            url: '/.netlify/functions/basicAuth',
+            method: 'post',
+            propertyName: 'token',
+          },
+        },
+      },
+    },
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -157,6 +172,8 @@ export default {
   router: {
     middleware: [
       'getWorks',
+      // 'auth',
+      'authenticated',
     ]
   }, /* router */
 
