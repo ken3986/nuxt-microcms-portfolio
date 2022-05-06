@@ -15,7 +15,7 @@ import meta from '~/mixins/metaMixin'
 export default {
   name: 'about',
 
-  layout: 'works',
+  // layout: 'works',
 
   mixins: [
     meta,

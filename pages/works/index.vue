@@ -12,7 +12,7 @@ import Meta from '~/mixins/metaMixin'
 
 export default {
 
-  layout: 'works',
+  // layout: 'works',
 
   mixins: [
     Meta,

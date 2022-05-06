@@ -4,9 +4,12 @@
     <!-- {{ $auth.loggedIn }} -->
     <b-container>
       <b-card>
+        <b-card-header>
+          お手数ですが、認証をお願いします...😌
+        </b-card-header>
         <b-form @submit.prevent="onSubmit">
           <b-form-group
-            label="password"
+            label="password："
           >
             <b-form-input
               v-model="form.password"
@@ -39,7 +42,7 @@ export default {
   }, /* computed */
 
   mounted () {
-    console.log(this.$route.query.redirect)
+    // console.log(this.$route.query.redirect)
   }, /* mounted */
 
   methods: {
@@ -54,6 +57,13 @@ export default {
             this.form.message = "パスワードが違います。"
           }
         })
+        if (response.status == 200) {
+          this.$store.commit('login')
+          if (this.$route.query.redirect) {
+            this.$router.push(this.$route.query.redirect)
+          }
+          this.$router.push('/')
+        }
       console.log(response.data.hashedPassword)
       this.$cookies.set('teten-portfolio', response.data.hashedPassword)
       console.log(this.$cookies.get('teten-portfolio'))

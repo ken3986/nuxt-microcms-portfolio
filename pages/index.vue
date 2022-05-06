@@ -16,7 +16,7 @@
 import meta from '~/mixins/metaMixin'
 
 export default {
-  layout: 'works',
+  // layout: 'works',
 
   // middleware: 'authenticated',
 

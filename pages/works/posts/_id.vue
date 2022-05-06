@@ -64,7 +64,7 @@ import metaMixin from '~/mixins/metaMixin'
 export default {
   name: '',
 
-  layout: 'works',
+  // layout: 'works',
 
   mixins: [
     metaMixin,

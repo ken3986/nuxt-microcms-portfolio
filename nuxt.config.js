@@ -63,6 +63,7 @@ export default {
       mode: process.env.NODE_ENV === 'production' ? 'server' : 'all',
     },
     // { src: '@/plugins/fakeBasicAuth', mode: 'client' },
+    { src: '@/plugins/basicAuth', mode: 'client' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -174,7 +175,7 @@ export default {
     middleware: [
       'getWorks',
       // 'auth',
-      'authenticated',
+      // 'authenticated',
     ]
   }, /* router */
 

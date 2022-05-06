@@ -28,7 +28,7 @@ import worksMixin from '~/mixins/worksMixin'
 import meta from '~/mixins/metaMixin'
 
 export default {
-  layout: 'works',
+  // layout: 'works',
 
   mixins: [
     worksMixin,

@@ -32,9 +32,9 @@ import axios from 'axios'
 import WorksMixin from '@/mixins/worksMixin'
 
 export default {
-  name: 'SearchResults',
+  name: 'searchResults',
 
-  layout: 'works',
+  // layout: 'works',
 
   mixins: [ WorksMixin ],
 
