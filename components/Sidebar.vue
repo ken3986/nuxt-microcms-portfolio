@@ -20,8 +20,6 @@
         <Tags></Tags>
       </aside>
 
-      <button @click="test">test</button>
-
   </div>
 </template>
 
@@ -44,10 +42,7 @@ export default {
   }, /* mounted */
 
   methods: {
-    async test () {
 
-
-    }
   } /* methods */
 
 }

@@ -1,5 +1,10 @@
 <template>
   <div>
+    <template v-if="error.statusCode === 404">
+      <h2>ページが見つかりません。</h2>
+      <p>URLに間違いがないかご確認ください。</p>
+      <NuxtLink to="/">TOP</NuxtLink>
+    </template>
     {{ error }}
   </div>
 </template>
@@ -21,7 +26,7 @@ export default {
   }, /* computed */
 
   mounted () {
-
+    console.log(this.error)
   }, /* mounted */
 
   methods: {
