@@ -1,6 +1,4 @@
-const axios = require('axios')
-
-export default async () => {  // const whiteURL = ['192.168.86.87:3000', 'example.com']
+export default async ({ store, $axios }) => {  // const whiteURL = ['192.168.86.87:3000', 'example.com']
   const app_name = 'teten-portfolio'
   let password = ''
 
@@ -9,17 +7,21 @@ export default async () => {  // const whiteURL = ['192.168.86.87:3000', 'exampl
   //   return
   // }
 
-console.log(localStorage.getItem(app_name))
+  if (store.state.loggedIn) {
+    return
+  }
+
   if (localStorage.getItem(app_name)) {
     password = localStorage.getItem(app_name)
 
-    const response = await axios
+    const response = await $axios
       .post('/.netlify/functions/authentication', {
         hashedPassword: password
       })
       .catch((error) => ({ error }))
 
     if (response.status === 200) {
+      store.commit('login')
       return
     }
   }
@@ -34,13 +36,14 @@ console.log(localStorage.getItem(app_name))
 
     if (inputPassword) {
       password = inputPassword
-      const response = await axios
+      const response = await $axios
         .post('/.netlify/functions/login', {
           password: inputPassword
         })
         .catch((error) => ({ error }))
 
       if (response.status === 200) {
+        store.commit('login')
         localStorage.setItem('teten-portfolio', response.data.hashedPassword)
         htmlElStyle.opacity = 1
       } else {
