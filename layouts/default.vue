@@ -102,4 +102,15 @@ $site-header-height: 3rem;
     font-family: $font-ubuntu;
   }
 }
+
+.mv-enter-active {
+  transition: all .3s ease;
+}
+.mv-leave-active {
+  transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.mv-enter, .mv-leave-to {
+  height: 0;
+  opacity: 0;
+}
 </style>

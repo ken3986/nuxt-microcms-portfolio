@@ -1,16 +1,40 @@
 // const axios = require('axios')
 
 export default async ( { store, redirect, route, $axios, app, nuxtState } ) => {
-  app.router.beforeEach((to, from, next) => {
+  app.router.beforeEach(async (to, from, next) => {
+    console.log(store.state.loggedIn)
+    // if (!store.state.loggedIn) {
+    //   if (to.path !== '/login') {
+    //     next({ path: '/login' })
+    //   }
+    //   // app.methods.setLayout('default')
+    //   // route.matched[0].components.default.options.layout = "default"
 
-    if (to.path !== '/login' && !store.state.loggedIn) {
-      // app.methods.setLayout('default')
-      // route.matched[0].components.default.options.layout = "default"
-      next({ path: '/login' })
-      // redirect({ path: '/login' })
-    } else {
-      next()
-    }
+    //   // redirect({ path: '/login' })
+    // } else {
+    //   if (app.$cookies.get('teten-portfolio')) {
+    //     console.log('cookie')
+    //     // const response = await $axios.post('/.netlify/functions/authentication', {
+    //     //   hashedPassword: app.$cookies.get('teten-portfolio')
+    //     // })
+    //     // if (response.status == 200) {
+    //       store.commit('login')
+
+    //       if (to.path === '/login') {
+    //         console.log('loginaPage2')
+    //         next({ path: '/' })
+    //       }
+    //     // }
+    //   }
+
+    //   if (to.path !== '/login') {
+    //     next({ path: '/' })
+    //   }
+    //   next()
+    // }
+
+
+    // next({ path: '/login' })
 
   })
 

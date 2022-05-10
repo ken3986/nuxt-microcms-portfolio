@@ -53,25 +53,36 @@ export default {
           password: this.form.password,
         })
         .catch((error) => {
+          if (error.response.status == 400) {
+            this.form.message = "パスワードを入力してください。"
+          }
           if (error.response.status == 401) {
             this.form.message = "パスワードが違います。"
           }
+          if (error.response.status == 500) {
+            this.form.message = "サーバーでエラーが発声しています。"
+          }
+          if (error.response.status == 501) {
+            this.form.message = "サーバーから応答がありませんでした。"
+          }
+          return false
         })
         if (response.status == 200) {
           this.$store.commit('login')
+          this.$cookies.set('teten-portfolio', response.data.hashedPassword)
+
           if (this.$route.query.redirect) {
             this.$router.push(this.$route.query.redirect)
           }
           this.$router.push('/')
         }
-      console.log(response.data.hashedPassword)
-      this.$cookies.set('teten-portfolio', response.data.hashedPassword)
-      console.log(this.$cookies.get('teten-portfolio'))
-      const response2 = await this.$axios
-        .post('/.netlify/functions/authentication', {
-          hashedPassword: this.$cookies.get('teten-portfolio')
-        })
-      console.log(response2)
+      // console.log(response.data.hashedPassword)
+      // console.log(this.$cookies.get('teten-portfolio'))
+      // const response2 = await this.$axios
+      //   .post('/.netlify/functions/authentication', {
+      //     hashedPassword: this.$cookies.get('teten-portfolio')
+      //   })
+      // console.log(response2)
       // if (response.status == 200) {
       //   console.log('OK')
       //   console.log(response.data.hashedPassword)

@@ -1,12 +1,14 @@
 <template>
   <div>
-    ページが見つかりません。
+    {{ error }}
   </div>
 </template>
 
 <script>
 export default {
   name: '',
+
+  props: [ 'error' ],
 
   data () {
     return {

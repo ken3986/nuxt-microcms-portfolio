@@ -62,8 +62,7 @@ export default {
       src: '~/plugins/microcmsPlugins',
       mode: process.env.NODE_ENV === 'production' ? 'server' : 'all',
     },
-    // { src: '@/plugins/fakeBasicAuth', mode: 'client' },
-    { src: '@/plugins/basicAuth', mode: 'client' },
+    { src: '@/plugins/fakeBasicAuth', mode: 'client' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -174,8 +173,6 @@ export default {
   router: {
     middleware: [
       'getWorks',
-      // 'auth',
-      // 'authenticated',
     ]
   }, /* router */
 
