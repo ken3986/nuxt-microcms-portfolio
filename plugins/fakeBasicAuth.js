@@ -9,7 +9,7 @@ export default async () => {  // const whiteURL = ['192.168.86.87:3000', 'exampl
   //   return
   // }
 
-
+console.log(localStorage.getItem(app_name))
   if (localStorage.getItem(app_name)) {
     password = localStorage.getItem(app_name)
 
@@ -41,7 +41,7 @@ export default async () => {  // const whiteURL = ['192.168.86.87:3000', 'exampl
         .catch((error) => ({ error }))
 
       if (response.status === 200) {
-        localStorage.setItem('teten-portfolio', inputPassword)
+        localStorage.setItem('teten-portfolio', response.data.hashedPassword)
         htmlElStyle.opacity = 1
       } else {
         window.alert('パスワードをご確認ください。')
