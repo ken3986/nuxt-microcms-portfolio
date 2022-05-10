@@ -63,6 +63,7 @@ export default {
       mode: process.env.NODE_ENV === 'production' ? 'server' : 'all',
     },
     { src: '@/plugins/fakeBasicAuth', mode: 'client' },
+    // { src: '@/plugins/auth', mode: 'client' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -162,7 +163,6 @@ export default {
     WORKS_API_KEY: process.env.NODE_ENV !== 'production' ? process.env.WORKS_API_KEY : undefined,
     GENERAL_SERVICE_DOMAIN: process.env.NODE_ENV !== 'production' ? process.env.GENERAL_SERVICE_DOMAIN : undefined,
     GENERAL_API_KEY: process.env.NODE_ENV !== 'production' ? process.env.GENERAL_API_KEY : undefined,
-    BASIC_PASSWORD: 'basicpassword',
   },
 
   generate: {

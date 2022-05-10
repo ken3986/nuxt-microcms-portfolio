@@ -5,7 +5,7 @@
     <b-container>
       <b-card>
         <b-card-header>
-          お手数ですが、認証をお願いします...😌
+          お手数ですが、認証をお願いします...????
         </b-card-header>
         <b-form @submit.prevent="onSubmit">
           <b-form-group

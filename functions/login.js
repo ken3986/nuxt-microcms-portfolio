@@ -19,17 +19,17 @@ exports.handler = async (event) => {
     const salt = await bcrypt.genSalt(10)
     const hashedPassword = await bcrypt.hash(password, salt)
 
-    console.log(hashedPassword)
     return {
       statusCode: 200,
-      // body: 'OK',
       body: JSON.stringify({ hashedPassword })
     }
   }
   else {
     return {
       statusCode: 401,
-      body: 'パスワードが違います。'
+      body: JSON.stringify({
+        error: 'パスワードが違います。'
+      })
     }
   }
 
