@@ -6,7 +6,7 @@ const { createClient } = require('microcms-js-sdk')
 const worksApiConfig = {
   endpoint: 'works',
   getPostsLimit: 100,
-  postsForPage: 6,
+  postsForPage: 9,
 }
 
 export default {

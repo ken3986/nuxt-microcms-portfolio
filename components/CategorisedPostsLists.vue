@@ -79,7 +79,8 @@ export default {
       const posts = await this.$worksClient.get({
         endpoint: 'works',
         queries: {
-          filters: `category[equals]${category.id}`
+          filters: `category[equals]${category.id}`,
+          limit: 3,
         }
       })
       const item = {
