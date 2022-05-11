@@ -1,0 +1,325 @@
+@charset "UTF-8";
+
+$maincolor: #00a85c;
+$subcolor: #a6a6a6;
+$accentcolor: #e00000;
+$myfont: 'Neuton', serif;
+
+
+/*------------------------------*/
+/* リセット系 */
+/*------------------------------*/
+*{
+    box-sizing: border-box;
+}
+body{
+    line-height: 1;
+}
+ul{
+    list-style: none;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+img{
+    vertical-align: bottom;
+}
+figure{
+    margin: 0;
+}
+
+/*------------------------------*/
+/* 汎用系 */
+/*------------------------------*/
+.mycontainer{
+    max-width: 740px;
+    margin: 0 auto;
+}
+@media(max-width: 767px){
+    .mycontainer{
+        margin: 0 15px;
+    }
+    .br-md{
+        display: none;
+    }
+}
+
+/*------------------------------*/
+/* 全体のスタイル */
+/*------------------------------*/
+body{
+    color: #222;
+}
+p{
+    line-height: 1.5;
+}
+
+section{
+    margin-bottom: 3em;
+    &:first-child{
+        margin-top: 3em;
+    }
+    .section-header{
+        margin-bottom: 2em;
+        .section-title{
+            font-family: $myfont;
+            font-weight: normal;
+            font-size: 2em;
+            text-align: center;
+            margin: 0 auto;
+            margin-bottom: 0.3em;
+
+        }
+        .section-title-ja{
+            color:$subcolor;
+            text-align: center;
+            font-size: 14px;
+            margin: 0;
+        }
+    }
+}
+
+
+
+/*------------------------------*/
+/* ヘッダーブロックのスタイル */
+/*------------------------------*/
+.site-header > div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .header-logo{
+        img{
+            width: 150px;
+        }
+    }
+    .header-nav{
+        .header-list{
+            display: flex;
+            li{
+                &:not(:last-child){
+                    margin-right: 2em;
+                }
+                a{
+                    color: $maincolor;
+                    &:hover{
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+}
+@media(max-width: 567px){
+    .site-header > div{
+        display: block;
+        .header-logo{
+            margin-top: 0.2em;
+            margin-bottom: 0.2em;
+            img{
+                width: 100px;
+            }
+        }
+        .header-nav{
+            .header-list{
+                justify-content: space-around;
+                margin-left: -15px;
+                margin-right: -15px;
+                margin: 0 -15px;
+                li{
+                    width: calc(100% / 4);
+                    &:not(:last-child){
+                        margin-right: 0;
+                        border-top: 1px solid #222;
+                        border-bottom: 1px solid #222;
+                        border-left: 1px solid #222;
+                    }
+                    &:last-child{
+                        border-top: 1px solid #222;
+                        border-bottom: 1px solid #222;
+                        border-left: 1px solid #222;
+                        border-right: 1px solid #222;
+                    }
+                    a{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        padding: 1em 0.5em;
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*------------------------------*/
+/* MVのスタイル */
+/*------------------------------*/
+.site-mv{
+    .mv-frame{
+        overflow: hidden;
+
+        .mv-img{
+            width: 100%;
+        }
+    }
+    @media(max-width: 1199px){
+        .mv-frame{
+            height: 400px;
+        }
+    }
+    @media(max-width: 767px){
+        .mv-frame{
+            height: 300px;
+            .mv-img{
+                height: 360px;
+                object-fit: cover;
+                object-position: 80%;
+            }
+        }
+    }
+    @media(max-width: 567px){
+        .mv-frame{
+            height: 240px;
+            .mv-img{
+                height: 300px;
+                object-position: 80% -10px;
+            }
+        }
+    }
+}
+
+
+/*------------------------------*/
+/* メインブロックのスタイル */
+/*------------------------------*/
+.testimonials{
+    text-align: center;
+    .testimonials-submitter{
+        font-size: 13px;
+    }
+}
+.plan{
+    .plan-posts{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 3em;
+        .plan-post{
+            width: 210px;
+            display: flex;
+            flex-direction: column;
+            img{
+                width: 100%;
+            }
+            .plan-post-text{
+                margin: 14px 0;
+                h3{
+                    font-size: 18px;
+                    font-weight: bold;
+                    color: $maincolor;
+                    margin: 0;
+                    margin-bottom: 8px;
+                }
+                p{
+                    font-size: 14px;
+                    margin: 0;
+                }
+            }
+            .plan-post-detail{
+                margin-top: auto;
+                margin-bottom: 14px;
+                h4{
+                    font-size: 18px;
+                    font-weight: bold;
+                    margin: 0;
+                    margin-bottom: 8px;
+                }
+                p{
+                    font-size: 14px;
+                    margin: 0;
+                }
+            }
+            .plan-post-jump{
+                display: block;
+                text-align: center;
+                color: currentColor;
+                border: 1px solid #000;
+                border-radius: 2px;
+                padding-top: .2em;
+                padding-bottom: .2em;
+                &:hover{
+                    opacity: 0.6;
+                }
+            }
+
+        }
+    }
+    @media(max-width: 767px){
+        .plan-posts{
+            display: block;
+            .plan-post{
+                width: auto;
+                max-width: 500px;
+                margin: 2em auto;
+            }
+        }
+    }
+    .plan-footer{
+        text-align: center;
+    }
+}
+
+.reservation{
+    .reservation-text{
+        margin-bottom: 2em;
+        text-align: center;
+    }
+    form{
+        text-align: center;
+        input{
+            width: 20em;
+        }
+        button{
+            background-color: $accentcolor;
+            color: #fff;
+            border: none;
+            padding: 0.2em 2.4em;
+            border-radius: 2px;
+            &:hover{
+                background-color: lighten($accentcolor, 10%);
+            }
+        }
+        @media(max-width: 560px){
+            input{
+                display: block;
+                margin: 1em auto;
+                max-width: none;
+                width: 100%;
+                height: 60px;
+                font-size: 1.2em;
+            }
+            button{
+                display: block;
+                margin: 0 auto;
+                width: 100%;
+                height: 40px;
+            }
+        }
+    }
+}
+
+/*------------------------------*/
+/* フッターブロックのスタイル */
+/*------------------------------*/
+.site-footer{
+    background-color: $subcolor;
+    text-align: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    small{
+        color: #fff;
+        font-size: 10px;
+    }
+}

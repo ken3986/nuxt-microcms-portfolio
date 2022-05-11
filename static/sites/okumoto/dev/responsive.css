@@ -1,0 +1,372 @@
+@charset "UTF-8";
+/* 非表示設定 */
+@media (min-width: 768px) {
+  /*----------------------------------------*/
+  /* 全体のスタイル */
+  /*----------------------------------------*/
+  /*----------------------------------------*/
+  /* ヘッダーブロックのスタイル */
+  /*----------------------------------------*/
+  .mobile-header {
+    display: none;
+  }
+  /*----------------------------------------*/
+  /* メインブロックのスタイル */
+  /*----------------------------------------*/
+  /*----------------------------------------*/
+  /* フッターブロックのスタイル */
+  /*----------------------------------------*/
+}
+
+/* 表示設定 */
+@media (max-width: 767px) {
+  /*----------------------------------------*/
+  /* 全体のスタイル */
+  /*----------------------------------------*/
+  .mv {
+    margin-top: 70px;
+  }
+  section, aside {
+    margin-bottom: 30px;
+  }
+  /*----------------------------*/
+  /* MVのスタイル */
+  /*----------------------------*/
+  .mv {
+    background-size: 700px;
+    background-position: top 0px center;
+    height: 260px;
+    margin-bottom: 30px;
+  }
+  .mv .mv-text {
+    padding-top: 10px;
+  }
+  .mv .mv-text .mv-catch .mv-catch__head {
+    font-size: 1.6rem;
+  }
+  .mv .mv-text .mv-catch .mv-catch__accent {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  .mv .mv-text .mv-catch .mv-catch__foot {
+    font-size: 1rem;
+    display: block;
+  }
+  .mv .mv-text .mv-points {
+    display: none;
+  }
+  .mv img.header-wave {
+    display: none;
+  }
+  /*----------------------------------------*/
+  /* ヘッダーブロックのスタイル */
+  /*----------------------------------------*/
+  .header {
+    display: none;
+  }
+  .mobile-header {
+    background-color: rgba(255, 255, 255, 0.9);
+    display: block;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 70px;
+    padding: 10px;
+    z-index: 100;
+  }
+  .mobile-header h1.mobile-header-logo {
+    float: left;
+  }
+  .mobile-header h1.mobile-header-logo img {
+    max-width: 180px;
+  }
+  .mobile-header .mobile-header-buttons {
+    float: right;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .mobile-header .mobile-header-buttons button {
+    background-color: #fff;
+    border: 1px solid #4ba5e8;
+    border-radius: 5px;
+    /* margin-left: 5px; */
+    height: 50px;
+    width: 42px;
+    padding: 0;
+    margin-left: 5px;
+  }
+  .mobile-header .mobile-header-buttons button a {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    text-decoration: none;
+    height: 100%;
+  }
+  .mobile-header .mobile-header-buttons button a i {
+    display: block;
+    font-size: 20px;
+    color: #4ba5e8;
+  }
+  .mobile-header .mobile-header-buttons button a i.fa-times {
+    display: none;
+  }
+  .mobile-header .mobile-header-buttons button a p {
+    color: #4ba5e8;
+    margin: 0;
+    font-size: 8px;
+  }
+  .mobile-header .mobile-header-nav {
+    display: none;
+    background-color: rgba(255, 255, 255, 0.9);
+    position: absolute;
+    top: 70px;
+    left: 0;
+    height: 290px;
+    width: 100%;
+  }
+  .mobile-header .mobile-header-nav ul {
+    height: 100%;
+  }
+  .mobile-header .mobile-header-nav ul li {
+    height: calc(100% / 5);
+    border-bottom: 1px solid #aaa;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .mobile-header .mobile-header-nav ul li:first-child {
+    border-top: 1px solid #aaa;
+  }
+  .mobile-header .mobile-header-nav ul li a {
+    font-size: 1.2rem;
+    text-decoration: none;
+    padding: 0 1em;
+  }
+  .mobile-header .mobile-header-nav ul li a:active {
+    background-color: #4ba5e8;
+    color: #fff;
+  }
+  .mobile-header .mobile-header-nav ul li i {
+    margin-right: 0.5em;
+  }
+  /*----------------------------------------*/
+  /* メインブロックのスタイル */
+  /*----------------------------------------*/
+  .middle {
+    padding: 0 15px;
+  }
+  .middle .container {
+    background-color: #fff;
+    margin-bottom: 20px;
+  }
+  .middle section {
+    margin-top: 30px;
+    margin-bottom: 40px;
+  }
+  .middle .subtitle {
+    padding: 1em;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-left: 5px solid #4ba5e8;
+  }
+  .main .point .points {
+    display: block;
+  }
+  .main .point .points .point-block {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 10px;
+    max-width: 100%;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    border-right: 0px solid #000;
+  }
+  .main .point .points .point-block i.fas {
+    -webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
+            box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
+    height: 100px;
+    width: 100px;
+    font-size: 3.6rem;
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+    margin: 0;
+  }
+  .main .point .points .point-block .point-text {
+    margin-top: 0;
+    margin-left: 30px;
+    min-height: initial;
+    border: 0px solid #000;
+  }
+  .main .point .points .point-block .point-text h3 {
+    text-align: left;
+    font-size: 1.4rem;
+    color: #000444;
+    letter-spacing: 0.1em;
+    margin-top: 0.2em;
+  }
+  .main .point .points .point-block .point-text p {
+    line-height: 1.8;
+    font-size: 0.9rem;
+    padding: 0;
+    margin: 0;
+  }
+  .main .message {
+    margin-top: 0;
+  }
+  .main .message .message-catch {
+    font-size: 1.2rem;
+    letter-spacing: normal;
+  }
+  .main .message .message-text {
+    background-color: transparent;
+    padding: 1em;
+    margin-bottom: 0;
+    position: relative;
+    padding-bottom: 60px;
+  }
+  .main .message .message-text p {
+    width: 100%;
+    line-height: 1.6;
+    color: #000;
+  }
+  .main .message .message-text img.message-tadayuki {
+    background-color: #fff;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: -15px -10px;
+       object-position: -15px -10px;
+    border: 3px solid #4ba5e8;
+    border-radius: 50%;
+    bottom: 20px;
+    right: 1em;
+  }
+  .main .message .message-links {
+    display: block;
+    height: initial;
+  }
+  .main .message .message-links .message-profile {
+    width: 100%;
+    padding: 0;
+    height: 40px;
+    margin-bottom: 10px;
+  }
+  .main .message .message-links .message-doctorsFile {
+    width: 100%;
+  }
+  .main .message .message-links .message-doctorsFile .message-doctorsFile__photo {
+    display: none;
+  }
+  .main .message .message-links .message-doctorsFile .message-doctorsFile__logo {
+    height: 60px;
+  }
+  .main .message .message-links .message-doctorsFile .message-doctorsFile__logo img {
+    -o-object-fit: none;
+       object-fit: none;
+  }
+  .main .blog .blog-post {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+  }
+  .main .blog .blog-post img {
+    width: 100px;
+    height: 100%;
+  }
+  .main .blog .blog-post p {
+    font-size: 0.9rem;
+  }
+  .main .blog .blog-post:after {
+    content: '';
+  }
+  /*----------------------------------------*/
+  /* サイドバーのスタイル */
+  /*----------------------------------------*/
+  .sidebar {
+    max-width: initial;
+  }
+  /*----------------------------------------*/
+  /* フッターブロックのスタイル */
+  /*----------------------------------------*/
+  .footer .footer-info {
+    padding-bottom: 10px;
+  }
+  .footer .footer-info .footer-map {
+    margin-bottom: 30px;
+  }
+  .footer .footer-info .footer-data .footer-logo {
+    width: 90%;
+  }
+  .footer .footer-info .footer-data address p {
+    color: #333;
+    font-size: 0.9rem;
+    margin: 0.2em;
+  }
+  .footer .footer-info .footer-data .time-info {
+    display: block;
+  }
+  .footer .footer-info .footer-data .time-info .time-contact button {
+    width: 100%;
+    height: 100px;
+    margin-top: 20px;
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  .footer .footer-info .footer-data .time-info .time-contact button i.fas {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 992px) {
+  .sidebar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    max-width: initial;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+  .sidebar .news {
+    margin-right: 20px;
+    width: 50%;
+  }
+  .sidebar .news-fb {
+    width: 50%;
+  }
+}
+
+@media (min-width: 1500px) {
+  .mv:after {
+    content: '';
+    width: 1500px;
+    background: -webkit-gradient(linear, left top, right top, from(white), color-stop(25%, rgba(255, 255, 255, 0)), color-stop(50%, rgba(255, 255, 255, 0)), color-stop(75%, rgba(255, 255, 255, 0)), to(white));
+    background: linear-gradient(to right, white 0%, rgba(255, 255, 255, 0) 25%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 75%, white 100%);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 50%;
+    -webkit-transform: translate(-50%);
+            transform: translate(-50%);
+  }
+}
+/*# sourceMappingURL=responsive.css.map */
