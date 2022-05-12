@@ -14,8 +14,8 @@ export default async ({ store, $axios, app }) => {
       return
     }
 
-    if (localStorage.getItem($SITE_NAME)) {
-      password = localStorage.getItem($SITE_NAME)
+    if (localStorage.getItem(app.$SITE_NAME)) {
+      password = localStorage.getItem(app.$SITE_NAME)
 
       const response = await $axios
         .post('/.netlify/functions/authentication', {
