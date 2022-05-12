@@ -1,21 +1,21 @@
 export default async ({ store, $axios, app }) => {
+
   app.router.beforeEach(async (to, from, next) => {
-    // const whiteURL = ['192.168.86.87:3000', 'example.com']
-    const app_name = 'teten-portfolio'
+    const whiteURL = ['localhost:3000']
     let password = ''
 
-    // if (whiteURL.includes(location.host)) {
-    //   htmlElStyle.opacity = 1
-    //   return
-    // }
+    if (whiteURL.includes(location.host)) {
+      next()
+      return
+    }
 
     if (store.state.loggedIn) {
       next()
       return
     }
 
-    if (localStorage.getItem(app_name)) {
-      password = localStorage.getItem(app_name)
+    if (localStorage.getItem($SITE_NAME)) {
+      password = localStorage.getItem($SITE_NAME)
 
       const response = await $axios
         .post('/.netlify/functions/authentication', {

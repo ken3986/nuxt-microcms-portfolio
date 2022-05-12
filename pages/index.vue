@@ -4,6 +4,11 @@
     <section>
       <About></About>
     </section>
+
+    <section>
+      <Skill></Skill>
+    </section>
+
     <section>
       <CategorisedPostsLists></CategorisedPostsLists>
     </section>

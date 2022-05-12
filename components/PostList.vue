@@ -18,7 +18,8 @@
               </figure>
             </div>
             <div class="post-card-body">
-              <h5 class="card-title">{{ post.title }}</h5>
+              <h5 class="card-title" v-if="post.title">{{ post.title }}</h5>
+              <p class="card-text" v-if="post.excerpt">{{ post.excerpt }}</p>
               <!-- <b-button :to="`/works/posts/${post.id}`" variant="primary" class="stretched-link">Read more</b-button> -->
             </div>
             <div class="post-card-footer">
@@ -93,10 +94,13 @@ export default {
 
 
 <style lang="scss" scoped>
+  .post {
+    margin-bottom: 1rem;
+  }
   .post-card {
     background-color: #fff;
     border-radius: 5px;
-    height: 230px;
+    height: 270px;
     filter: drop-shadow(3px 3px 3px rgba(0,0,0,0.6));
       &:hover {
         filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.6));
@@ -110,7 +114,8 @@ export default {
       height: 100%;
     }
     &-thumbnail {
-      height: 70%;
+      height: 50%;
+      margin-bottom: 0.5em;
       &-wrapper {
         overflow: hidden;
         height: 100%;
@@ -132,5 +137,14 @@ export default {
   .post-thumbnail {
     height: 100%;
     object-fit: cover;
+  }
+  .card-title {
+    font-size: fz(18);
+    margin-bottom: 0.5em;
+    @include line-clamp(2);
+  }
+  .card-text {
+    font-size: fz(12);
+    @include line-clamp(3);
   }
 </style>

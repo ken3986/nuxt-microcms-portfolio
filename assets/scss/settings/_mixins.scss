@@ -1,5 +1,5 @@
-@use 'sass:map';
-@use 'variables' as var;
+@use "sass:map";
+@use "variables" as var;
 
 /*------------------------------*/
 /* MIXIN */
@@ -7,19 +7,30 @@
 
 // メディアクエリ用ミックスイン
 // @param [string]$size サイズ px もしくは%
-@mixin mq($size...){
+@mixin mq($size...) {
   // 引数が1つの場合（max-width）
   @if length($size) == 1 {
-      @media(max-width: nth($size, 1)){
-          @content;
-      }
+    @media (max-width: nth($size, 1)) {
+      @content;
+    }
   }
 
   // 引数が2つの場合（min-width, max-width）
   @if length($size) == 2 {
-      @media(min-width: nth($size, 1))
-      and (max-width: nth($size, 2)){
-          @content;
-      }
+    @media (min-width: nth($size, 1)) and (max-width: nth($size, 2)) {
+      @content;
+    }
   }
+}
+
+// 行数制限ミックスイン
+/*
+* $line 行数
+*/
+@mixin line-clamp($line) {
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  @content;
 }

@@ -1,9 +1,7 @@
-@use 'sass:math' as math;
 /**
 *引数のfontSizeをremに変換する関数
 *@param fontSize フォントサイズ
 */
 @function fz($fontSize) {
-  // @return math.div($fontSize, 16) * 1rem;
   @return ($fontSize / 16) * 1rem;
 }

@@ -156,19 +156,22 @@ export default {
     }
 
     &-thumbnail {
-      height: 100%;
+      background-color: rgb(222, 226, 218);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     &-thumbnail-wrapper {
       height: $height;
       text-align: center;
-      background-color: rgb(222, 226, 218);
     }
 
 
     &-text {
       padding: 1em;
       p {
-        font-size: fz(14);;
+        font-size: fz(14);
+        @include line-clamp(3)
       }
     }
 
@@ -182,14 +185,16 @@ export default {
   }
 
   .category-block-footer {
-    background-color: $secondary;
+    // background-color: $secondary;
     text-align: right;
-    .category-block-more {
       padding: 0.5em 1em;
-      display: block;
-      text-decoration: none;
+    .category-block-more {
+      // display: block;
+      text-decoration: underline;
       &:hover {
-        background-color: lighten($secondary, 10%);
+        // background-color: lighten($secondary, 10%);
+        color: $primary;
+        text-decoration: underline;
       }
     }
   }

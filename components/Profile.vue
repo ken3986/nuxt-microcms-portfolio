@@ -11,7 +11,10 @@
         </NuxtLink>
       </b-col>
       <b-col cols="8" lg="12">
-        <p>東京都在住、デザイナー/コーダーです。お仕事募集中。</p>
+        <p>
+          Web・グラフィックデザイナー/コーダーとして活動しています。<br>
+          主な分野はWordPress / Nuxt / Illustratorなど。
+        </p>
         <div>
           <a href="https://github.com/ken3986" title="github" target="_blank">
             <b-icon icon="github" font-scale="2"></b-icon> Github

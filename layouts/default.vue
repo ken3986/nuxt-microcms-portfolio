@@ -3,11 +3,7 @@
     <Header class="site-header"></Header>
 
     <transition name="mv">
-      <div class="site-mv" v-show="$route.name == 'index'">
-        <img src="~/assets/img/shibahu.jpg" alt="">
-        <h1 class="site-mv-title">Portfolio</h1>
-        <p class="site-mv-sbuTitle"></p>
-      </div>
+      <MV v-show="$route.name == 'index'" class="site-mv"></MV>
     </transition>
 
     <div class="site-content">
@@ -89,19 +85,8 @@ $site-header-height: 3rem;
   position: relative;
   margin-top: $site-header-height;
   margin-bottom: -2rem;
-  img {
-    max-height: none;
-    width: 100%;
-  }
-  &-title {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #fff;
-    font-family: $font-ubuntu;
-  }
 }
+
 
 .mv-enter-active {
   transition: all .3s ease;
