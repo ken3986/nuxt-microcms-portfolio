@@ -195,6 +195,9 @@ export default {
   p {
     line-height: 1.8;
     letter-spacing: 0.2px;
+    &:last-child {
+      margin: 0;
+    }
   }
 
   ol {
