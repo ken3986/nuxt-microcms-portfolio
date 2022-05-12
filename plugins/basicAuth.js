@@ -48,7 +48,7 @@ export default async ({ store, $axios, app }) => {
 
         if (response.status === 200) {
           store.commit('login')
-          localStorage.setItem('teten-portfolio', response.data.hashedPassword)
+          localStorage.setItem(app.$SITE_NAME, response.data.hashedPassword)
           htmlElStyle.opacity = 1
         } else {
           window.alert('パスワードをご確認ください。')
