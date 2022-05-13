@@ -62,18 +62,18 @@ export default {
   min-height: 100vh;
 }
 
-$site-header-height: 3rem;
+$site-header-height: 50px;
 
 .site-header {
   position: fixed;
   width: 100%;
   z-index: 100;
-  height: $site-header-height;
+  // height: $site-header-height;
 }
 
 .site-content {
   flex-grow: 1;
-  padding-top: $site-header-height + 2rem;
+  padding-top: $site-header-height + 30px;
 }
 
 .site-mv {

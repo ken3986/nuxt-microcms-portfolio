@@ -19,7 +19,7 @@
 
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
-          <button @click.prevent="logout" v-show="$store.state.loggedIn">ログアウト</button>
+          <!-- <button @click.prevent="logout" v-show="$store.state.loggedIn">ログアウト</button> -->
           <!-- <b-nav-item-dropdown text="Lang" right>
             <b-dropdown-item href="#">EN</b-dropdown-item>
             <b-dropdown-item href="#">ES</b-dropdown-item>
