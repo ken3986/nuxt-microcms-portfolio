@@ -62,7 +62,7 @@ import hljs from 'highlight.js'
 import metaMixin from '~/mixins/metaMixin'
 
 export default {
-  name: '',
+  name: 'post-detail',
 
   // layout: 'works',
 
