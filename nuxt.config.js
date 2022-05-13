@@ -62,7 +62,7 @@ export default {
       src: '~/plugins/microcmsPlugins',
       mode: process.env.NODE_ENV === 'production' ? 'server' : 'all',
     },
-    { src: '@/plugins/basicAuth', mode: 'client' },
+    // { src: '@/plugins/basicAuth', mode: 'client' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
