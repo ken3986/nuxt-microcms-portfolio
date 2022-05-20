@@ -3,7 +3,18 @@
 
   <main id="post-detail">
 
-
+    <!-- パンくずリスト -->
+    <b-breadcrumb>
+      <b-breadcrumb-item to="/">
+        <b-icon icon="house-fill" scale="1.25" shift-v="1.25" aria-hidden="true"></b-icon>
+      </b-breadcrumb-item>
+      <b-breadcrumb-item to="/works">
+        Works
+      </b-breadcrumb-item>
+      <b-breadcrumb-item v-if="category" :to="'/works/category/' + category.id + '/page/1'">
+        {{ category.name }}
+      </b-breadcrumb-item>
+    </b-breadcrumb>
 
     <!-- タイトル -->
     <h1 class="post-title" v-if="title">{{ title }}</h1>
@@ -121,7 +132,6 @@ export default {
 
   data () {
     return {
-
     }
   }, /* data */
 

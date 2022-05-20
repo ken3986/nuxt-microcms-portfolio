@@ -1,5 +1,18 @@
 <template>
   <div>
+    <!-- パンくずリスト -->
+    <b-breadcrumb>
+      <b-breadcrumb-item to="/">
+        <b-icon icon="house-fill" scale="1.25" shift-v="1.25" aria-hidden="true"></b-icon>
+      </b-breadcrumb-item>
+      <b-breadcrumb-item to="/works">
+        Works
+      </b-breadcrumb-item>
+      <b-breadcrumb-item :to="'/works/' + currentTaxonomy.id" active="true">
+        {{ currentTaxonomy.name }}
+      </b-breadcrumb-item>
+    </b-breadcrumb>
+
     <h2>{{ currentTaxonomy.name }}</h2>
 
       <!-- 記事リスト -->
